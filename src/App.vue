@@ -13,6 +13,9 @@
     <div v-else>
       <button type="button" name="button" class="button is-primary is-loading">login</button>
     </div>
+    <div>
+      <button type="button" name="button" @click="clear">clear</button>
+    </div>
     <router-view :rooms="rooms" :book="book"></router-view>
   </div>
 </template>
@@ -54,6 +57,17 @@ export default {
     },
     book (room, id) {
       this.$firebaseRefs.rooms.child(id).set(room)
+    },
+    clear () {
+      let vm = this
+      var room = {
+        starttime: '00:00',
+        endtime: '00:00',
+        status: 'empty'
+      }
+      for (var n = 0; n < vm.rooms.length; n++) {
+        this.$firebaseRefs.rooms.child('Tutorial' + (n + 1)).set(room)
+      }
     }
   },
   mounted () {
