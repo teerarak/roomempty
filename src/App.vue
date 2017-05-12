@@ -56,6 +56,7 @@
           <button type="button" name="button" @click="clear">clear</button>
         <router-view :rooms="rooms" :book="book"></router-view>
       </section>
+      edrftghyujikdefrtghyujkiol
     </div>
 
   </div>
