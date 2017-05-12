@@ -1,8 +1,13 @@
 <template>
   <div class="Feeds">
-    <div v-for="room in rooms">
-      <div v-show = "room.status == 'empty'">
-        <h1>{{room['.key']}} <router-link :to="'/reservations/' + room['.key']"><button type="button">จอง</button></router-link></h1>
+
+    <div class="columns">
+      <div class="column is-9 is-offset-1">
+        <div v-for="room in rooms">
+          <div v-show = "room.status == 'empty'">
+            {{room['.key']}} <router-link :to="'/reservations/' + room['.key']"><button type="button">จอง</button></router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -11,6 +16,12 @@
 <script>
 export default {
   props: ['rooms'],
-  name: 'Feeds'
+  name: 'Feeds',
+  data () {
+    return {
+    }
+  },
+  methods: {
+  }
 }
 </script>
