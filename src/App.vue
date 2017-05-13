@@ -46,9 +46,10 @@
       <div class="container-fluid home-text">
           <h1 class="heading" data-target-resolver></h1>
       </div>
-      <section>
+      <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down" address="true"></a>
-        </section>
+      </section>
+      <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
     </div>
 
     <div class="container-fluid room-status">
