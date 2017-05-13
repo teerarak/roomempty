@@ -95,7 +95,7 @@ export default {
       })
       this.stdId = ''
       this.faculty = ''
-      this.registed = true
+      this.registed = false
     },
     login () {
       firebase.auth().signInWithPopup(provider)
