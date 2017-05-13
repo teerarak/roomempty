@@ -3,7 +3,7 @@
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
         จำนวนชั่วโมงที่ต้องการจอง<input type="text" v-model="endtime">
-        <router-link :to="'/profile/' + room['.key']"><button type="button" name="button" @click="books">จอง</button></router-link>
+        <router-link :to="'/profile/' + room['.key'] + '/' + time"><button type="button" name="button" @click="books">จอง</button></router-link>
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book'],
+  props: ['rooms', 'id', 'book', 'time'],
   name: 'Reservations',
   data () {
     return {
@@ -20,11 +20,9 @@ export default {
   },
   methods: {
     books () {
-      let currentdate = new Date()
-      let endHr = parseInt(currentdate.getHours()) + parseInt(this.endtime)
       let item = {
-        endtime: endHr + ':' + currentdate.getMinutes(),
-        starttime: currentdate.getHours() + ':' + currentdate.getMinutes(),
+        endtime: parseInt(this.time) + 3 + ':00',
+        starttime: this.time,
         status: 'active'
       }
       this.book(item, this.id)

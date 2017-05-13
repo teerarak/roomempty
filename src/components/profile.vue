@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     books () {
+      let vm = this
       let currentdate = new Date()
       let item = {
         endtime: '0:00',
@@ -33,6 +34,7 @@ export default {
         status: 'empty'
       }
       this.book(item, this.id)
+      clearInterval(vm.timeID)
     },
     timer () {
       let vm = this
