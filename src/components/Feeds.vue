@@ -1,14 +1,24 @@
 <template>
   <div class="Feeds">
+    <div class="header">
+      <p>จองห้องติว</p>
+    </div>
     <!-- {{rooms}} -->
     <div class="container is-fluid">
       <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-          <table class="table is-striped status-rooms">
+        <div class="column is-8 is-offset-2">
+          <div class="note">
+
+            <div class="note" style="padding-top:2px;">จองไม่ได้</div>
+            <div class="note" style="background-color:#ff2b56; width:32px; height:32px; "></div>
+            <div class="note" style="padding-top:2px;">จองได้</div>
+            <div class="note" style="background-color:#00d1b2; width:32px; height:32px;"></div>
+          </div>
+          <table class="table is-striped status-rooms" >
             <thead>
               <tr>
-                <th>Room</th>
-                <th>Borrow</th>
+                <th>ห้อง</th>
+                <th>เวลา</th>
               </tr>
             </thead>
             <tbody>
@@ -97,3 +107,16 @@ export default {
   }
 }
 </script>
+
+<style>
+  .header p{
+    font-size: 60px;
+    margin-bottom: 100px;
+  }
+  .note{
+    display: inline-block;
+    float:right;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+</style>

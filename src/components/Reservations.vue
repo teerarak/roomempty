@@ -2,7 +2,9 @@
   <div class="Reservations">
     <div v-for="room in rooms">
       <div class="modal is-active" v-if = "room['.key'] == id">
-        <div class="modal-background"></div>
+        <router-link :to="'/'">
+          <div class="modal-background"></div>
+        </router-link>
           <div class="modal-card">
             <header class="modal-card-head">
               <p class="modal-card-title">จำนวนชั่วโมงที่ต้องการจอง</p>
@@ -10,13 +12,13 @@
             <section class="modal-card-body">
               <div class="field has-addons has-addons-centered">
                 <p class="control">
-                  <a class="button is-success" @click="minus">-</a>
+                  <a class="button is-danger" @click="minus">-</a>
                 </p>
                 <p class="control">
                   <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
                 </p>
                 <p class="control">
-                  <a class="button is-danger" @click="plus">+</a>
+                  <a class="button is-success" @click="plus">+</a>
                 </p>
               </div>
             </section>

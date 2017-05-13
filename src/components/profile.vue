@@ -2,14 +2,37 @@
   <div class="profile">
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
-        <h1>คุณกำลังจองห้อง {{room['.key']}}</h1>
-        <h3>เวลาคงเหลือ {{myTime.hour}}:{{myTime.minute}}</h3>
-        <h3>ใช้ได้ถึงเวลา {{room.endtime}}</h3>
-        <router-link to="/"><button type="button" name="button" @click="books">ยกเลิกการจอง</button></router-link>
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter rooms">
+            คุณกำลังจองห้อง {{room['.key']}}
+          </div>
+        </div>
+        <div class="clock-interval">
+          <div class="run-time">
+            {{myTime.hour}}:{{myTime.minute}}
+          </div>
+          <div class="status-timeout">
+            ใช้ได้ถึงเวลา {{room.endtime}}
+          </div>
+        </div>
+        <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></router-link>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.clock-interval {
+  height: 100vh;
+  /*margin-top: 20rem;*/
+  /*position: absolute;*/
+  /*padding-top: 20px;
+  text-align: center;*/
+  background: url('../assets/clock.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+</style>
 
 <script>
 export default {
@@ -62,7 +85,7 @@ export default {
     }
   },
   mounted () {
-    this.timeID = setInterval(this.timer, 100)
+    this.timeID = setInterval(this.timer, 1000)
   }
 }
 </script>
