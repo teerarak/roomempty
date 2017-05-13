@@ -41,15 +41,23 @@
         </div>
       </div>
     </nav>
-
+    <div v-show="authorized">
+      <div v-show="registed">
+        รหัสนักศึกษา<input type="text" v-model="stdId" placeholder="รหัสนักศึกษา...">
+        คณะ <select v-model="faculty">
+          <option selected>คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
+          <option>อุตสาหกรรมเกษตร</option>
+        </select>
+        <button type="button" @click="addUser">add</button>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="container-fluid home-text">
           <h1 class="heading" data-target-resolver></h1>
       </div>
-      <section class="sec" v-show="authorized">
+      <section class="sec">
         <a href="#" class="scroll-down" address="true"></a>
       </section>
-      <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
     </div>
 
     <div class="container-fluid room-status">
@@ -82,19 +90,35 @@ export default {
       profile: {},
       ready: false,
       authorized: false,
+      registed: false,
       rooms: [],
+      users: [],
+      stdId: '',
+      faculty: '',
       checkedRows: [],
       selected: {}
     }
   },
   methods: {
+    addUser () {
+      this.$firebaseRefs.users.push({
+        facebookId: this.profile.uid,
+        name: this.profile.displayName,
+        stdId: this.stdId,
+        faculty: this.faculty
+      })
+      this.stdId = ''
+      this.faculty = ''
+      this.registed = true
+    },
     login () {
-      firebase.auth().signInWithRedirect(provider)
+      firebase.auth().signInWithPopup(provider)
     },
     logout () {
       let vm = this
       firebase.auth().signOut().then(function () {
         vm.authorized = false
+        vm.profile = {}
       }, function (error) {
         console.error(error)
       })
@@ -129,10 +153,19 @@ export default {
   mounted () {
     let vm = this
     vm.$bindAsArray('rooms', db.ref('Rooms').orderByKey())
+    vm.$bindAsArray('users', db.ref('Users'))
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         vm.authorized = true
         vm.profile = user
+        vm.users.forEach(function (element) {
+          if (element.facebookId === vm.profile.uid) {
+            vm.registed = false
+            return 0
+          } else {
+            vm.registed = true
+          }
+        })
       }
       vm.ready = true
     })
