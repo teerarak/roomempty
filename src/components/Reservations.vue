@@ -13,7 +13,7 @@
               <a class="button is-danger">-</a>
             </section>
             <footer class="modal-card-foot">
-              <router-link :to="'/profile/' + room['.key'] + '/' + time"><a class="button is-success" @click="books">จอง</a></router-link>
+              <router-link :to="'/profile/' + room['.key'] + '/' + time"><a class="button is-success" @click="books(time)">จอง</a></router-link>
               <a href="#" class="button">ยกเลิก</a>
             </footer>
           </div>
@@ -28,17 +28,26 @@ export default {
   name: 'Reservations',
   data () {
     return {
-      endtime: ''
+      item: {
+        9: 'empty',
+        10: 'empty',
+        11: 'empty',
+        12: 'empty',
+        13: 'empty',
+        14: 'empty',
+        15: 'empty',
+        16: 'empty',
+        17: 'empty',
+        18: 'empty',
+        19: 'empty'
+      }
     }
   },
   methods: {
-    books () {
-      let item = {
-        endtime: parseInt(this.time) + 3 + ':00',
-        starttime: this.time,
-        status: 'active'
-      }
-      this.book(item, this.id)
+    books (time) {
+      let vm = this
+      vm.item[time] = 'active'
+      this.book(vm.item, this.id)
     }
   }
 }
