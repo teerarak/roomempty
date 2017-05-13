@@ -27,11 +27,18 @@ export default {
   methods: {
     books () {
       let vm = this
-      let currentdate = new Date()
       let item = {
-        endtime: '0:00',
-        starttime: currentdate.getHours() + ':' + currentdate.getMinutes(),
-        status: 'empty'
+        9: 'empty',
+        10: 'empty',
+        11: 'empty',
+        12: 'empty',
+        13: 'empty',
+        14: 'empty',
+        15: 'empty',
+        16: 'empty',
+        17: 'empty',
+        18: 'empty',
+        19: 'empty'
       }
       this.book(item, this.id)
       clearInterval(vm.timeID)
