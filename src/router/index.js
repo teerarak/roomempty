@@ -13,13 +13,13 @@ export default new Router({
       component: Feeds
     },
     {
-      path: '/reservations/:id',
+      path: '/reservations/:id/:time',
       name: 'Reservations',
       props: true,
       component: Reservations
     },
     {
-      path: '/profile/:id',
+      path: '/profile/:id/:time',
       name: 'profile',
       props: true,
       component: profile
