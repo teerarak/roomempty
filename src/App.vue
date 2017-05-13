@@ -44,7 +44,7 @@
 
     <div class="container-fluid">
       <div class="container-fluid home-text">
-          <h1 class="heading" data-target-resolver>123as</h1>
+          <h1 class="heading" data-target-resolver></h1>
       </div>
       <section>
         <a href="#" class="scroll-down" address="true"></a>
@@ -56,7 +56,6 @@
           <button type="button" name="button" @click="clear">clear</button>
         <router-view :rooms="rooms" :book="book"></router-view>
       </section>
-      edrftghyujikdefrtghyujkiol
     </div>
 
   </div>
@@ -82,20 +81,7 @@ export default {
       profile: {},
       ready: false,
       authorized: false,
-      rooms: [],
-      tableData: [
-        {'id': 1, 'user': {'first_name': 'Jesse', 'last_name': 'Simmons'}, 'date': '2016-10-15 13:43:27', 'gender': 'Male'}
-      ],
-      checkedRows: [],
-      selected: {},
-      isBordered: false,
-      isStriped: false,
-      isNarrowed: false,
-      isCheckable: false,
-      hasMobileCards: true,
-      isPaginated: true,
-      isPaginationSimple: false,
-      perPage: 10
+      rooms: []
     }
   },
   methods: {
