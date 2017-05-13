@@ -8,11 +8,10 @@
       <div class="columns">
         <div class="column is-8 is-offset-2">
           <div class="note">
-
-            <div class="note" style="padding-top:2px;">จองไม่ได้</div>
-            <div class="note" style="background-color:#ff2b56; width:32px; height:32px; "></div>
-            <div class="note" style="padding-top:2px;">จองได้</div>
-            <div class="note" style="background-color:#00d1b2; width:32px; height:32px;"></div>
+            <div class="note textnote">จองไม่ได้</div>
+            <div class="note boxnote" style="background-color:#ff2b56;"></div>
+            <div class="note textnote">จองได้</div>
+            <div class="note boxnote" style="background-color:#00d1b2;"></div>
           </div>
           <table class="table is-striped status-rooms" >
             <thead>
@@ -118,5 +117,28 @@ export default {
     float:right;
     border-radius: 5px;
     margin-right: 5px;
+  }
+  .boxnote{
+    width:32px;
+    height:32px;
+  }
+  @media (min-width:1024px){
+    .textnote{
+      padding-top:2px;
+    }
+  }
+  @media (max-width:1024px){
+    .textnote{
+      font-size: 24px;
+    }
+    .boxnote{
+      margin-top: 5px;
+    }
+    table{
+      font-size: 24px;
+    }
+    button{
+      margin-bottom: 5px;
+    }
   }
 </style>
