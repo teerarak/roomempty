@@ -12,7 +12,7 @@
             {{myTime.hour}}:{{myTime.minute}}
           </div>
           <div class="status-timeout">
-            ใช้ได้ถึงเวลา {{room.endtime}}
+            ใช้ได้ถึงเวลา {{endtime}}:00
           </div>
         </div>
         <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></router-link>
@@ -22,8 +22,19 @@
 </template>
 
 <style>
+.btn.checkout {
+  width: 130px;
+  height: 50px;
+  border-radius: 3%;
+  border: 1px solid #FFF;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  background-color: red;
+  /*margin-left: 100px;*/
+}
 .clock-interval {
   height: 100vh;
+  /*margin-left: 100px;*/
   /*margin-top: 20rem;*/
   /*position: absolute;*/
   /*padding-top: 20px;
@@ -36,15 +47,16 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book'],
+  props: ['rooms', 'id', 'book', 'time', 'amount'],
   name: 'profile',
   data () {
     return {
       myTime: {
-        hour: '03',
+        hour: '0' + this.amount,
         minute: '00'
       },
-      timeID: ''
+      timeID: '',
+      endtime: parseInt(this.time) + parseInt(this.amount)
     }
   },
   methods: {

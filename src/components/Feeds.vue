@@ -20,11 +20,10 @@
           <div class="columns">
             <div class="column is-8 is-offset-2">
               <div class="note">
-
-                <div class="note" style="padding-top:2px;">จองไม่ได้</div>
-                <div class="note" style="background-color:#ff2b56; width:32px; height:32px; "></div>
-                <div class="note" style="padding-top:2px;">จองได้</div>
-                <div class="note" style="background-color:#00d1b2; width:32px; height:32px;"></div>
+                <div class="note textnote">จองไม่ได้</div>
+                <div class="note boxnote" style="background-color:#ff2b56;"></div>
+                <div class="note textnote">จองได้</div>
+                <div class="note boxnote" style="background-color:#00d1b2;"></div>
               </div>
               <table class="table is-striped status-rooms" >
                 <thead>
@@ -98,6 +97,7 @@
         </div>
       </section>
     </div>
+
   </div>
 </template>
 
@@ -123,6 +123,112 @@ export default {
 </script>
 
 <style>
+.container-fluid.home-text {
+  font-family: 'Unica One', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-text {
+  background: -webkit-linear-gradient(left top, #262626, #595959); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #262626, #595959); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #262626, #595959); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #262626, #595959); /* Standard syntax */
+  height: 50rem;
+  max-width: 100%;
+ }
+.heading {
+  color: #eee;
+  font-size: 7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.container-fluid.room-status {
+  background-color: white;
+  height: 50rem;
+  text-align: center;
+  padding-top: 10rem;
+}
+.btn.start {
+  position: absolute;
+  top: 40rem;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  height: 50px;
+  border-radius: 3%;
+  border: 1px solid #FFF;
+  background-color: transparent;
+  color: #FFF;
+  font-size: 15px;
+  border-radius: 10%;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.scroll-down {
+  opacity: 1;
+  -webkit-transition: all .5s ease-in 3s;
+  transition: all .5s ease-in 3s;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -16px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #FFF;
+  background-size: 14px auto;
+  border-radius: 50%;
+  z-index: 2;
+  -webkit-animation: bounce 2s infinite 2s;
+  animation: bounce 2s infinite 2s;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+.scroll-down:before {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 6px);
+    transform: rotate(-45deg);
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    border: 2px solid white;
+    border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  60% {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
   .header p{
     font-size: 60px;
     margin-bottom: 100px;
@@ -132,5 +238,28 @@ export default {
     float:right;
     border-radius: 5px;
     margin-right: 5px;
+  }
+  .boxnote{
+    width:32px;
+    height:32px;
+  }
+  @media (min-width:1024px){
+    .textnote{
+      padding-top:2px;
+    }
+  }
+  @media (max-width:1024px){
+    .textnote{
+      font-size: 24px;
+    }
+    .boxnote{
+      margin-top: 5px;
+    }
+    table{
+      font-size: 24px;
+    }
+    button{
+      margin-bottom: 5px;
+    }
   }
 </style>

@@ -41,7 +41,6 @@
         </div>
       </div>
     </nav>
-    
     <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>

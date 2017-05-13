@@ -15,7 +15,7 @@
                   <a class="button is-danger" @click="minus">-</a>
                 </p>
                 <p class="control">
-                  <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
+                  <input class="input" style="text-align:center;" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
                 </p>
                 <p class="control">
                   <a class="button is-success" @click="plus">+</a>
@@ -23,7 +23,7 @@
               </div>
             </section>
             <footer class="modal-card-foot">
-              <router-link :to="'/profile/' + room['.key'] + '/' + amount">
+              <router-link :to="'/profile/' + room['.key'] + '/' + time + '/' + amount">
                 <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
               </router-link>
               <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
