@@ -89,13 +89,6 @@
           </div>
           <button  class="modal-close"></button>
         </div>
-
-        <!-- รหัสนักศึกษา<input type="text" v-model="stdId" placeholder="รหัสนักศึกษา...">
-        คณะ <select v-model="faculty">
-          <option selected>คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
-          <option>อุตสาหกรรมเกษตร</option>
-        </select>
-        <button type="button" @click="addUser">add</button> -->
       </div>
     </div>
 
