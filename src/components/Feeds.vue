@@ -38,9 +38,6 @@
                   {{room['.key']}}
                 </td>
                 <td>
-                  <div v-for="(room, index) in rooms">
-                    {{room['.value'][9]}}
-                  </div>
                   <router-link :to="'/reservations/' + room['.key'] + '/' + time">
                     <a class="button-borrow" data-target="modal">
                       <button type="button" class="button is-primary" @click="setTime('9')">09:00</button>
