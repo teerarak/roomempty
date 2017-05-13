@@ -15,8 +15,6 @@
 export default {
   props: ['rooms', 'id', 'book'],
   name: 'profile',
-<<<<<<< HEAD
-=======
   data () {
     return {
       myTime: {
@@ -26,7 +24,6 @@ export default {
       timeID: ''
     }
   },
->>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
   methods: {
     books () {
       let currentdate = new Date()
@@ -36,9 +33,6 @@ export default {
         status: 'empty'
       }
       this.book(item, this.id)
-<<<<<<< HEAD
-    }
-=======
     },
     timer () {
       let vm = this
@@ -60,7 +54,6 @@ export default {
   },
   mounted () {
     this.timeID = setInterval(this.timer, 100)
->>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
   }
 }
 </script>
