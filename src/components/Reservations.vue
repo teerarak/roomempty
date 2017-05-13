@@ -15,7 +15,7 @@
                   <a class="button is-danger" @click="minus">-</a>
                 </p>
                 <p class="control">
-                  <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
+                  <input class="input" style="text-align:center;" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
                 </p>
                 <p class="control">
                   <a class="button is-success" @click="plus">+</a>
