@@ -52,7 +52,7 @@
         <button type="button" @click="addUser">add</button>
       </div>
     </div>
-    
+
     <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>
@@ -96,7 +96,7 @@ export default {
       })
       this.stdId = ''
       this.faculty = ''
-      this.registed = true
+      this.registed = false
     },
     login () {
       firebase.auth().signInWithPopup(provider)

@@ -1,13 +1,21 @@
 <template>
   <div class="Feeds">
-    <div class="container-fluid">
-      <div class="container-fluid home-text">
-          <h1 class="heading" data-target-resolver></h1>
-      </div>
-      <section class="sec" v-show="authorized">
-        <a href="#" class="scroll-down" address="true"></a>
-      </section>
-      <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
+
+    <div class="column is-flex-mobile is-hidden-tablet">
+        <div class="home-text">
+            <h1 class="heading on-mobile" data-target-resolver></h1>
+        </div>
+        <section class="sec" v-show="authorized">
+          <a href="#" class="scroll-down" address="true"></a>
+        </section>
+        <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
+    </div>
+
+    <div class="column is-flex-mobile is-hidden-tablet">
+      mobile
+    </div>
+    <div class="column is-flex-tablet is-hidden-mobile">
+      with out mobile
     </div>
 
     <div class="container-fluid room-status">
@@ -125,21 +133,19 @@ export default {
 </script>
 
 <style>
-.container-fluid.home-text {
+.home-text {
   font-family: 'Unica One', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.home-text {
   background: -webkit-linear-gradient(left top, #262626, #595959); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right, #262626, #595959); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom right, #262626, #595959); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, #262626, #595959); /* Standard syntax */
-  height: 50rem;
-  max-width: 100%;
- }
-.heading {
+  height: 40rem;
+  width: 100%;
+}
+.heading.on-mobile {
   color: #eee;
   font-size: 7rem;
   font-weight: 300;
