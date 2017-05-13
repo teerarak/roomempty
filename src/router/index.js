@@ -19,7 +19,7 @@ export default new Router({
       component: Reservations
     },
     {
-      path: '/profile/:id/:amount',
+      path: '/profile/:id/:time/:amount',
       name: 'profile',
       props: true,
       component: profile

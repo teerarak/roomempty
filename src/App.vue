@@ -54,7 +54,7 @@
 
     <div class="container-fluid room-status">
       <section class="ok">
-          <!-- <button type="button" name="button" @click="clear">clear</button> -->
+          <button type="button" name="button" @click="clear">clear</button>
         <router-view :rooms="rooms" :book="book"></router-view>
       </section>
     </div>
