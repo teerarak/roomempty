@@ -40,7 +40,7 @@
                 <td>
                     <router-link :to="'/reservations/' + room['.key'] + '/' + time" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime(index)"><p v-if="index===9">0</p>{{index}}:00</button>
+                        <button type="button" class="button" :style="{ backgroundColor: 'red'; }" @click="setTime(index)"><p v-if="index===9">0</p>{{index}}:00</button>
                       </a>{{ }}
                     </router-link>
                 </td>
@@ -61,7 +61,8 @@ export default {
   name: 'Feeds',
   data () {
     return {
-      time: 0
+      time: 0,
+      color: '#ff2b56'
     }
   },
   methods: {
