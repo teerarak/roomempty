@@ -12,13 +12,13 @@
             <section class="modal-card-body">
               <div class="field has-addons has-addons-centered">
                 <p class="control">
-                  <a class="button is-danger">-</a>
+                  <a class="button is-danger" @click="minus">-</a>
                 </p>
                 <p class="control">
-                  <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง">
+                  <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
                 </p>
                 <p class="control">
-                  <a class="button is-success">+</a>
+                  <a class="button is-success" @click="plus">+</a>
                 </p>
               </div>
             </section>
@@ -53,7 +53,7 @@ export default {
         18: 'empty',
         19: 'empty'
       },
-      amount: 0
+      amount: 1
     }
   },
   methods: {
@@ -64,6 +64,18 @@ export default {
         vm.item[index] = 'active'
       }
       this.book(vm.item, this.id)
+    },
+    plus () {
+      let vm = this
+      vm.amount++
+    },
+    minus () {
+      let vm = this
+      if (vm.amount <= 1) {
+        vm.amount = 1
+      } else {
+        vm.amount--
+      }
     }
   }
 }
