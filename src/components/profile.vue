@@ -2,11 +2,6 @@
   <div class="profile">
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
-        <!-- <div class="columns is-flex-tablet is-hidden-mobile">
-          <div class="column is-half is-offset-one-quarter rooms">
-            คุณกำลังจองห้อง {{room['.key']}}
-          </div>
-        </div> -->
         <div class="columns is-flex-tablet is-hidden-mobile">
           <div class="column is-half is-offset-one-quarter ">
             <div class="rooms">
@@ -36,7 +31,7 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></router-link>
+            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
       </div>
@@ -104,7 +99,7 @@
       width: 100vw;
     }
   }
-  .is-flex-tablet .btn.checkout {
+  .btn.checkout {
     width: 130px;
     height: 50px;
     border-radius: 3%;
