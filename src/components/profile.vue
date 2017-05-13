@@ -2,47 +2,119 @@
   <div class="profile">
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
-        <div class="columns">
-          <div class="column is-half is-offset-one-quarter rooms">
-            คุณกำลังจองห้อง {{room['.key']}}
+        <div class="columns is-flex-tablet is-hidden-mobile">
+          <div class="column is-half is-offset-one-quarter ">
+            <div class="rooms">
+              คุณกำลังจองห้อง {{room['.key']}}
+            </div>
+            <div class="clock-interval">
+              <div class="run-time">
+                {{myTime.hour}}:{{myTime.minute}}
+              </div>
+              <div class="status-timeout">
+                ใช้ได้ถึงเวลา {{endtime}}:00
+              </div>
+            </div>
+            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
-        <div class="clock-interval">
-          <div class="run-time">
-            {{myTime.hour}}:{{myTime.minute}}
-          </div>
-          <div class="status-timeout">
-            ใช้ได้ถึงเวลา {{endtime}}:00
+        <div class="columns is-flex-mobile is-hidden-tablet">
+          <div class="column is-12">
+            <div class="rooms">
+              คุณกำลังจองห้อง {{room['.key']}}
+            </div>
+            <div class="clock-interval">
+              <div class="run-time">
+                {{myTime.hour}}:{{myTime.minute}}
+              </div>
+              <div class="status-timeout">
+                ใช้ได้ถึงเวลา {{endtime}}:00
+              </div>
+            </div>
+            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
-        <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></router-link>
       </div>
     </div>
   </div>
 </template>
 
 <style>
-.btn.checkout {
-  width: 130px;
-  height: 50px;
-  border-radius: 3%;
-  border: 1px solid #FFF;
-  font-size: 18px;
-  margin-bottom: 1rem;
-  background-color: red;
-  /*margin-left: 100px;*/
-}
-.clock-interval {
-  height: 100vh;
-  /*margin-left: 100px;*/
-  /*margin-top: 20rem;*/
-  /*position: absolute;*/
-  /*padding-top: 20px;
-  text-align: center;*/
-  background: url('../assets/clock.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  body{
+    height: 100vh;
+    background-color: #e0e4e7;
+  }
+  .is-flex-tablet .rooms {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .is-flex-mobile .rooms {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 3%;
+  }
+  .clock-interval{
+    background: url('../assets/clock.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .is-flex-tablet .clock-interval{
+    background-size: 55%;
+    padding:20%;
+  }
+  .is-flex-mobile .clock-interval{
+    background-size: 80%;
+    padding-top: 40%;
+    padding-bottom: 40%;
+  }
+  .run-time{
+    color: black;
+  }
+  .is-flex-tablet .run-time {
+    font-size: 4em;
+    text-align: center;
+  }
+  .is-flex-tablet .status-timeout {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .is-flex-mobile .run-time {
+    font-size: 3em;
+    text-align: center;
+    width: 100vw;
+  }
+  .is-flex-mobile .status-timeout {
+    font-size: 1rem;
+    text-align: center;
+    width: 100vw;
+  }
+  @media (width:768px){
+    body{
+      height: 100%;
+      background-color: #e0e4e7;
+    }
+    .is-flex-mobile .rooms {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .is-flex-mobile .run-time {
+      font-size: 7em;
+      text-align: center;
+      width: 100vw;
+    }
+    .is-flex-mobile .status-timeout {
+      font-size: 1.5em;
+      text-align: center;
+      width: 100vw;
+    }
+  }
+  .checkout {
+    width: 130px;
+    height: 50px;
+    font-size: 18px;
+  }
 </style>
 
 <script>
@@ -56,26 +128,23 @@ export default {
         minute: '00'
       },
       timeID: '',
+      item: [],
       endtime: parseInt(this.time) + parseInt(this.amount)
     }
   },
   methods: {
-    books () {
+    books (time) {
       let vm = this
-      let item = {
-        9: 'empty',
-        10: 'empty',
-        11: 'empty',
-        12: 'empty',
-        13: 'empty',
-        14: 'empty',
-        15: 'empty',
-        16: 'empty',
-        17: 'empty',
-        18: 'empty',
-        19: 'empty'
+      vm.rooms.forEach(function (element) {
+        if (vm.id === element['.key']) {
+          vm.item = (element['.value'])
+        }
+      })
+      console.log(vm.item)
+      for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
+        vm.item[i] = 'offline'
       }
-      this.book(item, this.id)
+      this.book(vm.item, vm.id)
       clearInterval(vm.timeID)
     },
     timer () {

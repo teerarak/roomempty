@@ -30,7 +30,7 @@
           </div>
           <div v-else>
             <a class="nav-item">
-              <button type="button" @click="login" class="button is-primary login">login</button>
+              <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
             </a>
           </div>
         </div>
@@ -41,21 +41,55 @@
         </div>
       </div>
     </nav>
-    <!-- <div class="column is-flex-mobile is-hidden-tablet">
-      mobile
-    </div>
-    <div class="column is-flex-tablet is-hidden-mobile">
-      with out mobile
-    </div> -->
 
     <div v-show="authorized">
       <div v-show="registed">
-        รหัสนักศึกษา<input type="text" v-model="stdId" placeholder="รหัสนักศึกษา...">
-        คณะ <select v-model="faculty">
-          <option selected>คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
-          <option>อุตสาหกรรมเกษตร</option>
-        </select>
-        <button type="button" @click="addUser">add</button>
+
+        <div class="modal is-active">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">รหัสนักศึกษา</label>
+                </div>
+                <div class="field-body">
+                  <div class="field is-grouped">
+                    <p class="control is-expanded">
+                      <input class="input" type="text" v-model="stdId" placeholder="รหัสนักศึกษา" >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal has-addons">
+                <div class="field-label is-normal">
+                  <label class="label">คณะ</label>
+                </div>
+                <div class="field-body">
+                <p class="control is-expanded">
+                  <span class="select is-fullwidth">
+                    <select v-model="faculty">
+                      <option selected>คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
+                      <option>อุตสาหกรรมเกษตร</option>
+                    </select>
+                  </span>
+                </p>
+                </div>
+              </div>
+              <div class="field is-horizontal has-addons">
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control ">
+                      <button class="button is-info is-outlined is-small" @click="addUser">บันทึก</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <button  class="modal-close"></button>
+        </div>
       </div>
     </div>
 
@@ -105,7 +139,7 @@ export default {
       this.registed = false
     },
     login () {
-      firebase.auth().signInWithPopup(provider)
+      firebase.auth().signInWithRedirect(provider)
     },
     logout () {
       let vm = this
@@ -166,8 +200,11 @@ export default {
 }
 </script>
 
-<style>
-button.logout, button.login, button.is-loading {
-  margin: 0;
-}
+<style >
+  button.logout, button.login, button.is-loading {
+    margin: 0;
+  }
+  .control button{
+    float: right;
+  }
 </style>
