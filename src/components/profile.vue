@@ -3,10 +3,7 @@
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
         <h1>คุณกำลังจองห้อง {{room['.key']}}</h1>
-<<<<<<< HEAD
-=======
         <h3>เวลาคงเหลือ {{myTime.hour}}:{{myTime.minute}}</h3>
->>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
         <h3>ใช้ได้ถึงเวลา {{room.endtime}}</h3>
         <router-link to="/"><button type="button" name="button" @click="books">ยกเลิกการจอง</button></router-link>
       </div>

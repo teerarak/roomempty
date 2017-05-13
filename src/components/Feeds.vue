@@ -1,6 +1,5 @@
 <template>
   <div class="Feeds">
-<<<<<<< HEAD
     <!-- {{rooms}} -->
     <div class="container is-fluid">
       <div class="columns">
@@ -24,11 +23,6 @@
             </tbody>
           </table>
         </div>
-=======
-    <div v-for="room in rooms">
-      <div v-show = "room.status == 'empty'">
-        {{room['.key']}} <router-link :to="'/reservations/' + room['.key']"><button type="button">จอง</button></router-link>
->>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
       </div>
     </div>
   </div>
@@ -40,12 +34,16 @@ export default {
   name: 'Feeds',
   data () {
     return {
-      tableData: [{date: '2016-05-03', name: 'Tom', address: 'No. 189, Grove St, Los Angeles'}]
+      time: '00:00'
     }
   },
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
+    },
+    setTime (time) {
+      let vm = this
+      vm.time = time
     }
   }
 }
