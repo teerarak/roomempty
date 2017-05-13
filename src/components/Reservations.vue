@@ -12,13 +12,13 @@
             <section class="modal-card-body">
               <div class="field has-addons has-addons-centered">
                 <p class="control">
-                  <a class="button is-success">-</a>
+                  <a class="button is-danger">-</a>
                 </p>
                 <p class="control">
                   <input class="input" type="text" v-model="endtime" placeholder="จำนวนชั่วโมง">
                 </p>
                 <p class="control">
-                  <a class="button is-danger">+</a>
+                  <a class="button is-success">+</a>
                 </p>
               </div>
             </section>
