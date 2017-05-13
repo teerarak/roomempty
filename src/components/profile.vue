@@ -44,6 +44,9 @@
     height: 100vh;
     background-color: #e0e4e7;
   }
+  .profile.column {
+    background-color: #e0e4e7;
+  }
   .is-flex-tablet .rooms {
     text-align: center;
     font-size: 2.5rem;
