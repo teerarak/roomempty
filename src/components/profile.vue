@@ -44,7 +44,7 @@
     height: 100vh;
     background-color: #e0e4e7;
   }
-  .profile.column {
+  .profile .column {
     background-color: #e0e4e7;
   }
   .is-flex-tablet .rooms {

@@ -16,18 +16,18 @@
       <div class="column">
         <section class="ok">
           <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
-          <center>
-            <div class="note on-mobile">
-              <div class="note boxnote on-mobile" style="background-color:#00d1b2;"></div>
-              <div class="note textnote on-mobile">จองได้</div>
-              <div class="note boxnote on-mobile" style="background-color:#ff2b56;"></div>
-              <div class="note textnote on-mobile">จองไม่ได้</div>
-            </div>
-          </center>
 
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-8 is-offset-2">
+                <center>
+                  <div class="note on-mobile">
+                    <div class="note boxnote on-mobile" style="background-color:#00d1b2;"></div>
+                    <div class="note textnote on-mobile">จองได้</div>
+                    <div class="note boxnote on-mobile" style="background-color:#ff2b56;"></div>
+                    <div class="note textnote on-mobile">จองไม่ได้</div>
+                  </div>
+                </center>
             <table class="table is-striped status-rooms" >
               <thead>
                 <tr>
@@ -114,18 +114,15 @@
       <div class="column">
         <section class="ok2">
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
-          <center>
-            <div class="note on-tablet">
-              <div class="note boxnote on-tablet" style="background-color:#00d1b2;"></div>
-              <div class="note textnote on-tablet">จองได้</div>
-              <div class="note boxnote on-tablet" style="background-color:#ff2b56;"></div>
-              <div class="note textnote on-tablet">จองไม่ได้</div>
-            </div>
-          </center>
-
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-8 is-offset-2">
+                <div class="note on-tablet">
+                  <div class="note textnote on-tablet">จองไม่ได้</div>
+                  <div class="note boxnote on-tablet" style="background-color:#ff2b56;"></div>
+                  <div class="note textnote on-tablet">จองได้</div>
+                  <div class="note boxnote on-tablet" style="background-color:#00d1b2;"></div>
+                </div>
             <table class="table is-striped status-rooms" >
               <thead>
                 <tr>
@@ -319,15 +316,15 @@ export default {
     margin-bottom: 100px;
   }
   .note.on-mobile {
-    margin-top: 5px;
+    margin-top: 20px;
     display: inline-block;
-    margin-top: 7px;
   }
-  .boxnote.on-mobile{
-    margin-top: 1rem;
-    width:17px;
-    height:17px;
+  .note.boxnote.on-mobile{
+    width:24px;
+    height:24px;
     border-radius: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   .note.textnote.on-mobile {
     font-size: 15px;
