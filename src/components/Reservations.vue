@@ -40,18 +40,25 @@ export default {
   name: 'Reservations',
   data () {
     return {
-      item: {},
+      item: [],
       amount: 1
     }
   },
   methods: {
     books (time) {
       let vm = this
-      for (var n = 0; n < vm.amount; n++) {
-        let index = parseInt(time) + n
-        vm.item[index] = 'active'
+      vm.rooms.forEach(function (element) {
+        if (vm.id === element['.key']) {
+          vm.item = element['.value']
+        }
+      })
+      for (let i = parseInt(time); i < parseInt(time) + vm.amount; i++) {
+        vm.item[i] = 'active'
+        // console.log(i)
       }
-      this.book(vm.item, this.id)
+      console.log(vm.item)
+      console.log(vm.id)
+      this.book(vm.item, vm.id)
     },
     plus () {
       let vm = this
