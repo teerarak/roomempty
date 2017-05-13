@@ -40,7 +40,7 @@
                 <td>
                     <router-link :to="'/reservations/' + room['.key'] + '/' + time" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button" :style="{ backgroundColor: 'red'; }" @click="setTime(index)"><p v-if="index===9">0</p>{{index}}:00</button>
+                        <button type="button" class="button" :style="{backgroundColor:color}" @click="setTime(index)"><p v-if="index===9" :disabled="status">0</p>{{index}}:00</button>
                       </a>{{ }}
                     </router-link>
                 </td>
@@ -62,7 +62,8 @@ export default {
   data () {
     return {
       time: 0,
-      color: '#ff2b56'
+      color: '#00d1b2',
+      status: false
     }
   },
   methods: {
@@ -72,6 +73,13 @@ export default {
     setTime (time) {
       let vm = this
       vm.time = time
+      this.changeBtn()
+    }
+  },
+  computed: {
+    changeBtn () {
+      this.color = '#ff2b56'
+      this.status = true
     }
   }
 }
