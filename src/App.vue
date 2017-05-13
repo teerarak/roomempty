@@ -44,7 +44,7 @@
 
     <div class="container-fluid">
       <div class="container-fluid home-text">
-          <h1 class="heading" data-target-resolver>123as</h1>
+          <h1 class="heading" data-target-resolver></h1>
       </div>
       <section>
         <a href="#" class="scroll-down" address="true"></a>

@@ -1,39 +1,28 @@
 <template>
   <div class="Feeds">
-    <div v-for="room in rooms">
-      <div v-show = "room.status == 'empty'">
-        {{room['.key']}}
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('10:00')">10:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('11:00')">11:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-          <router-link :to="'/reservations/' + room['.key'] + time">
-            <button type="button" @click="time('09:00')">09:00</button>
-          </router-link>
-        </router-link>
+    <!-- {{rooms}} -->
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <table class="table is-striped status-rooms">
+            <thead>
+              <tr>
+                <th>Room</th>
+                <th>Borrow</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="room in rooms">
+                <td v-show = "room.status == 'empty'">
+                  {{room['.key']}}
+                </td>
+                <td>
+                  <router-link :to="'/reservations/' + room['.key']"><a class="button-borrow" data-target="modal"><button type="button">จอง</button></a></router-link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
