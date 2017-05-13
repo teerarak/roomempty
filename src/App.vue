@@ -42,7 +42,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <div class="container-fluid home-text">
           <h1 class="heading" data-target-resolver></h1>
       </div>
@@ -50,15 +50,15 @@
         <a href="#" class="scroll-down" address="true"></a>
       </section>
       <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
-    </div>
+    </div> -->
 
-    <div class="container-fluid room-status">
+    <!-- <div class="container-fluid room-status">
       <section class="ok">
           <button type="button" name="button" @click="clear">clear</button>
         <router-view :rooms="rooms" :book="book"></router-view>
       </section>
-    </div>
-
+    </div> -->
+    <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>
 

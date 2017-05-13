@@ -22,8 +22,19 @@
 </template>
 
 <style>
+.btn.checkout {
+  width: 130px;
+  height: 50px;
+  border-radius: 3%;
+  border: 1px solid #FFF;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  background-color: red;
+  /*margin-left: 100px;*/
+}
 .clock-interval {
   height: 100vh;
+  /*margin-left: 100px;*/
   /*margin-top: 20rem;*/
   /*position: absolute;*/
   /*padding-top: 20px;
