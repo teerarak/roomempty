@@ -1,5 +1,6 @@
 <template>
   <div class="Feeds">
+<<<<<<< HEAD
     <!-- {{rooms}} -->
     <div class="container is-fluid">
       <div class="columns">
@@ -23,6 +24,11 @@
             </tbody>
           </table>
         </div>
+=======
+    <div v-for="room in rooms">
+      <div v-show = "room.status == 'empty'">
+        {{room['.key']}} <router-link :to="'/reservations/' + room['.key']"><button type="button">จอง</button></router-link>
+>>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
       </div>
     </div>
   </div>

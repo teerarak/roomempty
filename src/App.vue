@@ -44,7 +44,11 @@
 
     <div class="container-fluid">
       <div class="container-fluid home-text">
+<<<<<<< HEAD
           <h1 class="heading" data-target-resolver></h1>
+=======
+          <h1 class="heading" data-target-resolver>123as</h1>
+>>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
       </div>
       <section>
         <a href="#" class="scroll-down" address="true"></a>
@@ -81,7 +85,24 @@ export default {
       profile: {},
       ready: false,
       authorized: false,
+<<<<<<< HEAD
       rooms: []
+=======
+      rooms: [],
+      tableData: [
+        {'id': 1, 'user': {'first_name': 'Jesse', 'last_name': 'Simmons'}, 'date': '2016-10-15 13:43:27', 'gender': 'Male'}
+      ],
+      checkedRows: [],
+      selected: {},
+      isBordered: false,
+      isStriped: false,
+      isNarrowed: false,
+      isCheckable: false,
+      hasMobileCards: true,
+      isPaginated: true,
+      isPaginationSimple: false,
+      perPage: 10
+>>>>>>> 8f3d9182daa0a957f72c14b37e5accf042c09fd2
     }
   },
   methods: {
