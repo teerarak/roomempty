@@ -25,79 +25,78 @@
                 <div class="note textnote">จองได้</div>
                 <div class="note boxnote" style="background-color:#00d1b2;"></div>
               </div>
-              <table class="table is-striped status-rooms" >
-                <thead>
-                  <tr>
-                    <th>ห้อง</th>
-                    <th>เวลา</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="room in rooms">
-                    <td>
-                      {{room['.key']}}
-                    </td>
-                    <td>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('9')">09:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('10')">10:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('11')">11:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('12')">12:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('13')">13:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('14')">14:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('15')">15:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('16')">16:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('17')">17:00</button>
-                        </a>
-                      </router-link>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                        <a class="button-borrow" data-target="modal">
-                          <button type="button" class="button is-primary" @click="setTime('18')">18:00</button>
-                        </a>
-                      </router-link>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <table class="table is-striped status-rooms" >
+            <thead>
+              <tr>
+                <th>ห้อง</th>
+                <th>เวลา</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="room in rooms">
+                <td>
+                  {{room['.key']}}
+                </td>
+                <td>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('9')">09:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('10')">10:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('11')">11:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('12')">12:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('13')">13:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('14')">14:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('15')">15:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('16')">16:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('17')">17:00</button>
+                    </a>
+                  </router-link>
+                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <a class="button-borrow" data-target="modal">
+                      <button type="button" class="button is-primary" @click="setTime('18')">18:00</button>
+                    </a>
+                  </router-link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
         </div>
+       </div>
       </section>
     </div>
-
   </div>
 </template>
 
