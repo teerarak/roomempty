@@ -47,10 +47,13 @@
   .is-flex-tablet .rooms {
     text-align: center;
     font-size: 2.5rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
   .is-flex-mobile .rooms {
     text-align: center;
     font-size: 1.5rem;
+    margin-top: 3%;
   }
   .clock-interval{
     background: url('../assets/clock.png');
