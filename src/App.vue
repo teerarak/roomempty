@@ -82,19 +82,8 @@ export default {
       ready: false,
       authorized: false,
       rooms: [],
-      tableData: [
-        {'id': 1, 'user': {'first_name': 'Jesse', 'last_name': 'Simmons'}, 'date': '2016-10-15 13:43:27', 'gender': 'Male'}
-      ],
       checkedRows: [],
-      selected: {},
-      isBordered: false,
-      isStriped: false,
-      isNarrowed: false,
-      isCheckable: false,
-      hasMobileCards: true,
-      isPaginated: true,
-      isPaginationSimple: false,
-      perPage: 10
+      selected: {}
     }
   },
   methods: {
@@ -115,18 +104,30 @@ export default {
     clear () {
       let vm = this
       var room = {
-        starttime: '00:00',
-        endtime: '00:00',
-        status: 'empty'
+        9: 'empty',
+        10: 'empty',
+        11: 'empty',
+        12: 'empty',
+        13: 'empty',
+        14: 'empty',
+        15: 'empty',
+        16: 'empty',
+        17: 'empty',
+        18: 'empty',
+        19: 'empty'
       }
       for (var n = 0; n < vm.rooms.length; n++) {
-        this.$firebaseRefs.rooms.child('Tutorial' + (n + 1)).set(room)
+        if (n < 9) {
+          this.$firebaseRefs.rooms.child('Tutor' + ('0' + (n + 1))).set(room)
+        } else {
+          this.$firebaseRefs.rooms.child('Tutor' + (n + 1)).set(room)
+        }
       }
     }
   },
   mounted () {
     let vm = this
-    vm.$bindAsArray('rooms', db.ref('Room'))
+    vm.$bindAsArray('rooms', db.ref('Rooms').orderByKey())
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         vm.authorized = true
