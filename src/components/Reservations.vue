@@ -15,7 +15,7 @@
                   <a class="button is-success">-</a>
                 </p>
                 <p class="control">
-                  <input class="input" type="text" v-model="endtime" placeholder="จำนวนชั่วโมง">
+                  <input class="input" type="text" v-model="amount" placeholder="จำนวนชั่วโมง">
                 </p>
                 <p class="control">
                   <a class="button is-danger">+</a>
@@ -23,7 +23,7 @@
               </div>
             </section>
             <footer class="modal-card-foot">
-              <router-link :to="'/profile/' + room['.key'] + '/' + time">
+              <router-link :to="'/profile/' + room['.key'] + '/' + amount">
                 <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
               </router-link>
               <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
@@ -59,7 +59,10 @@ export default {
   methods: {
     books (time) {
       let vm = this
-      vm.item[time] = 'active'
+      for (var n = 0; n < vm.amount; n++) {
+        let index = parseInt(time) + n
+        vm.item[index] = 'active'
+      }
       this.book(vm.item, this.id)
     }
   }
