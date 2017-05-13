@@ -8,13 +8,23 @@
               <p class="modal-card-title">จำนวนชั่วโมงที่ต้องการจอง</p>
             </header>
             <section class="modal-card-body">
-              <a class="button is-success">+</a>
-              <input type="text" v-model="endtime" size="30">
-              <a class="button is-danger">-</a>
+              <div class="field has-addons has-addons-centered">
+                <p class="control">
+                  <a class="button is-success">-</a>
+                </p>
+                <p class="control">
+                  <input class="input" type="text" v-model="endtime" placeholder="จำนวนชั่วโมง">
+                </p>
+                <p class="control">
+                  <a class="button is-danger">+</a>
+                </p>
+              </div>
             </section>
             <footer class="modal-card-foot">
-              <router-link :to="'/profile/' + room['.key'] + '/' + time"><a class="button is-success" @click="books(time)">จอง</a></router-link>
-              <a href="#" class="button">ยกเลิก</a>
+              <router-link :to="'/profile/' + room['.key'] + '/' + time">
+                <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
+              </router-link>
+              <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
             </footer>
           </div>
       </div>
@@ -53,3 +63,15 @@ export default {
   }
 }
 </script>
+<style>
+  @media (min-width:1024px){
+    .modal-card{
+      width:35vw;
+    }
+  }
+  @media (max-width:1024px){
+    .modal-card{
+      width:45vw;
+    }
+  }
+</style>
