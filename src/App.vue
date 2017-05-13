@@ -51,22 +51,8 @@
         <button type="button" @click="addUser">add</button>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="container-fluid home-text">
-          <h1 class="heading" data-target-resolver></h1>
-      </div>
-      <section class="sec">
-        <a href="#" class="scroll-down" address="true"></a>
-      </section>
-    </div>
 
-    <div class="container-fluid room-status">
-      <section class="ok">
-          <button type="button" name="button" @click="clear">clear</button>
-        <router-view :rooms="rooms" :book="book"></router-view>
-      </section>
-    </div>
-
+    <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>
 
