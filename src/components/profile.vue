@@ -15,7 +15,7 @@
             ใช้ได้ถึงเวลา {{endtime}}:00
           </div>
         </div>
-        <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></router-link>
+        <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></router-link>
       </div>
     </div>
   </div>
@@ -56,26 +56,23 @@ export default {
         minute: '00'
       },
       timeID: '',
+      item: [],
       endtime: parseInt(this.time) + parseInt(this.amount)
     }
   },
   methods: {
-    books () {
+    books (time) {
       let vm = this
-      let item = {
-        9: 'empty',
-        10: 'empty',
-        11: 'empty',
-        12: 'empty',
-        13: 'empty',
-        14: 'empty',
-        15: 'empty',
-        16: 'empty',
-        17: 'empty',
-        18: 'empty',
-        19: 'empty'
+      vm.rooms.forEach(function (element) {
+        if (vm.id === element['.key']) {
+          vm.item = (element['.value'])
+        }
+      })
+      console.log(vm.item)
+      for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
+        vm.item[i] = 'offline'
       }
-      this.book(item, this.id)
+      this.book(vm.item, vm.id)
       clearInterval(vm.timeID)
     },
     timer () {
