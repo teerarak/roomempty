@@ -1,18 +1,30 @@
 <template>
   <div class="Feeds">
-    <div class="header">
-      <p>จองห้องติว</p>
+    <div class="container-fluid">
+      <div class="container-fluid home-text">
+          <h1 class="heading" data-target-resolver></h1>
+      </div>
+      <section class="sec" v-show="authorized">
+        <a href="#" class="scroll-down" address="true"></a>
+      </section>
+      <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
     </div>
-    <!-- {{rooms}} -->
-    <div class="container is-fluid">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
-          <div class="note">
-            <div class="note textnote">จองไม่ได้</div>
-            <div class="note boxnote" style="background-color:#ff2b56;"></div>
-            <div class="note textnote">จองได้</div>
-            <div class="note boxnote" style="background-color:#00d1b2;"></div>
-          </div>
+
+    <div class="container-fluid room-status">
+      <section class="ok">
+        <div class="header">
+          <p>จองห้องติว</p>
+        </div>
+        <!-- {{rooms}} -->
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-8 is-offset-2">
+              <div class="note">
+                <div class="note textnote">จองไม่ได้</div>
+                <div class="note boxnote" style="background-color:#ff2b56;"></div>
+                <div class="note textnote">จองได้</div>
+                <div class="note boxnote" style="background-color:#00d1b2;"></div>
+              </div>
           <table class="table is-striped status-rooms" >
             <thead>
               <tr>
@@ -27,7 +39,7 @@
                 </td>
                 <td>
                   <div v-for="(room, index) in rooms">
-                    {{room['Tutor'+index][9]}}
+                    {{room['.value'][9]}}
                   </div>
                   <router-link :to="'/reservations/' + room['.key'] + '/' + time">
                     <a class="button-borrow" data-target="modal">
@@ -83,15 +95,17 @@
               </tr>
             </tbody>
           </table>
+         </div>
         </div>
-      </div>
+       </div>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['rooms'],
+  props: ['rooms', 'authorized'],
   name: 'Feeds',
   data () {
     return {
