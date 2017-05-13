@@ -2,7 +2,9 @@
   <div class="Reservations">
     <div v-for="room in rooms">
       <div class="modal is-active" v-if = "room['.key'] == id">
-        <div class="modal-background"></div>
+        <router-link :to="'/'">
+          <div class="modal-background"></div>
+        </router-link>
           <div class="modal-card">
             <header class="modal-card-head">
               <p class="modal-card-title">จำนวนชั่วโมงที่ต้องการจอง</p>

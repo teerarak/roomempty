@@ -3,8 +3,8 @@
     <!-- {{rooms}} -->
     <div class="container is-fluid">
       <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-          <table class="table is-striped status-rooms">
+        <div class="column is-8 is-offset-2">
+          <table class="table is-striped status-rooms" >
             <thead>
               <tr>
                 <th>Room</th>
