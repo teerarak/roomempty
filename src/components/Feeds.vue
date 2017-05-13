@@ -1,22 +1,8 @@
 <template>
   <div class="Feeds">
-
-    <div class="home-text">
-        <h1 class="heading" data-target-resolver></h1>
-    </div>
-
-    <div class="columns is-flex-mobile is-hidden-tablet">
-      <div class="column ">
-            <section class="sec">
-              <a href="#" class="scroll-down on-mobile" address="true"></a>
-            </section>
-      </div>
-    </div>
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
-        <section class="ok">
           <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
-
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-8 is-offset-2">
@@ -98,21 +84,11 @@
            </div>
           </div>
          </div>
-        </section>
       </div>
     </div>
 
-
     <div class="columns is-flex-tablet is-hidden-mobile">
       <div class="column">
-            <section class="sec">
-              <a href="#" class="scroll-down on-tablet" address="true"></a>
-            </section>
-      </div>
-    </div>
-    <div class="columns is-flex-tablet is-hidden-mobile">
-      <div class="column">
-        <section class="ok2">
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
           <div class="container is-fluid">
             <div class="columns">
@@ -193,7 +169,6 @@
            </div>
           </div>
          </div>
-        </section>
       </div>
     </div>
 
@@ -222,25 +197,6 @@ export default {
 </script>
 
 <style>
-.home-text {
-  font-family: 'Unica One', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: -webkit-linear-gradient(left top, #262626, #595959);
-  background: -o-linear-gradient(bottom right, #262626, #595959);
-  background: -moz-linear-gradient(bottom right, #262626, #595959);
-  background: linear-gradient(to bottom right, #262626, #595959);
-  height: 45rem;
-  width: 100%;
-}
-.heading {
-  margin-bottom: 6rem;
-  color: #eee;
-  font-size: 4rem;
-  text-transform: uppercase;
-  margin-bottom: 10rem;
-}
 .heading-rooms.on-mobile {
   margin-top: 2rem;
   font-size: 2rem;
