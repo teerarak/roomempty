@@ -52,12 +52,12 @@
       <button type="button" name="button" class="btn start" v-if="authorized != true">Get Start</button>
     </div> -->
 
-    <!-- <div class="container-fluid room-status">
+    <div class="container-fluid room-status">
       <section class="ok">
           <button type="button" name="button" @click="clear">clear</button>
         <router-view :rooms="rooms" :book="book"></router-view>
       </section>
-    </div> -->
+    </div>
     <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>
