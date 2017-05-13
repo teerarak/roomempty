@@ -25,12 +25,12 @@
         <div v-if="ready">
           <div v-if="authorized">
             <a class="nav-item">
-              <button type="button" @click="logout" class="button is-danger">logout</button>
+              <button type="button" @click="logout" class="button is-danger logout">logout</button>
             </a>
           </div>
           <div v-else>
             <a class="nav-item">
-              <button type="button" @click="login" class="button is-primary">login</button>
+              <button type="button" @click="login" class="button is-primary login">login</button>
             </a>
           </div>
         </div>
@@ -41,6 +41,12 @@
         </div>
       </div>
     </nav>
+    <!-- <div class="column is-flex-mobile is-hidden-tablet">
+      mobile
+    </div>
+    <div class="column is-flex-tablet is-hidden-mobile">
+      with out mobile
+    </div> -->
 
     <div v-show="authorized">
       <div v-show="registed">
@@ -159,3 +165,9 @@ export default {
   }
 }
 </script>
+
+<style>
+button.logout, button.login, button.is-loading {
+  margin: 0;
+}
+</style>
