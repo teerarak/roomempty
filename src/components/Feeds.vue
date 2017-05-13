@@ -13,15 +13,10 @@
             </thead>
             <tbody>
               <tr v-for="room in rooms">
-                <td v-show = "room.status == 'empty'">
+                <td>
                   {{room['.key']}}
                 </td>
                 <td>
-                  <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                    <a class="button-borrow" data-target="modal">
-                      <button type="button" @click="setTime('8')">08:00</button>
-                    </a>
-                  </router-link>
                   <router-link :to="'/reservations/' + room['.key'] + '/' + time">
                     <a class="button-borrow" data-target="modal">
                       <button type="button" @click="setTime('9')">09:00</button>
