@@ -40,19 +40,7 @@ export default {
   name: 'Reservations',
   data () {
     return {
-      item: {
-        9: 'empty',
-        10: 'empty',
-        11: 'empty',
-        12: 'empty',
-        13: 'empty',
-        14: 'empty',
-        15: 'empty',
-        16: 'empty',
-        17: 'empty',
-        18: 'empty',
-        19: 'empty'
-      },
+      item: {},
       amount: 1
     }
   },
