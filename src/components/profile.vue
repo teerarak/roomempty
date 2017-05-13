@@ -15,7 +15,7 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></center></router-link>
+            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
         <div class="columns is-flex-mobile is-hidden-tablet">
@@ -31,7 +31,7 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
       </div>
@@ -40,6 +40,10 @@
 </template>
 
 <style>
+  body{
+    height: 100vh;
+    background-color: #e0e4e7;
+  }
   .is-flex-tablet .rooms {
     text-align: center;
     font-size: 2.5rem;
@@ -84,6 +88,10 @@
     width: 100vw;
   }
   @media (width:768px){
+    body{
+      height: 100%;
+      background-color: #e0e4e7;
+    }
     .is-flex-mobile .rooms {
       text-align: center;
       font-size: 2.5rem;
@@ -99,11 +107,9 @@
       width: 100vw;
     }
   }
-  .btn.checkout {
+  .checkout {
     width: 130px;
     height: 50px;
-    border-radius: 3%;
-    border: 1px solid #FFF;
     font-size: 18px;
   }
 </style>
