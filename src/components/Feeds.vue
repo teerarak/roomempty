@@ -2,7 +2,38 @@
   <div class="Feeds">
     <div v-for="room in rooms">
       <div v-show = "room.status == 'empty'">
-        {{room['.key']}} <router-link :to="'/reservations/' + room['.key']"><button type="button">จอง</button></router-link>
+        {{room['.key']}}
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('10:00')">10:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('11:00')">11:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+          <router-link :to="'/reservations/' + room['.key'] + time">
+            <button type="button" @click="time('09:00')">09:00</button>
+          </router-link>
+        </router-link>
       </div>
     </div>
   </div>
@@ -14,12 +45,16 @@ export default {
   name: 'Feeds',
   data () {
     return {
-      tableData: [{date: '2016-05-03', name: 'Tom', address: 'No. 189, Grove St, Los Angeles'}]
+      time: '00:00'
     }
   },
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
+    },
+    setTime (time) {
+      let vm = this
+      vm.time = time
     }
   }
 }
