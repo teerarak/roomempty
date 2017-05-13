@@ -2,47 +2,110 @@
   <div class="profile">
     <div v-for="room in rooms">
       <div v-if = "room['.key'] == id">
-        <div class="columns">
-          <div class="column is-half is-offset-one-quarter rooms">
-            คุณกำลังจองห้อง {{room['.key']}}
+        <div class="columns is-flex-tablet is-hidden-mobile">
+          <div class="column is-half is-offset-one-quarter ">
+            <div class="rooms">
+              คุณกำลังจองห้อง {{room['.key']}}
+            </div>
+            <div class="clock-interval">
+              <div class="run-time">
+                {{myTime.hour}}:{{myTime.minute}}
+              </div>
+              <div class="status-timeout">
+                ใช้ได้ถึงเวลา {{endtime}}:00
+              </div>
+            </div>
+            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
-        <div class="clock-interval">
-          <div class="run-time">
-            {{myTime.hour}}:{{myTime.minute}}
-          </div>
-          <div class="status-timeout">
-            ใช้ได้ถึงเวลา {{endtime}}:00
+        <div class="columns is-flex-mobile is-hidden-tablet">
+          <div class="column is-12">
+            <div class="rooms">
+              คุณกำลังจองห้อง {{room['.key']}}
+            </div>
+            <div class="clock-interval">
+              <div class="run-time">
+                {{myTime.hour}}:{{myTime.minute}}
+              </div>
+              <div class="status-timeout">
+                ใช้ได้ถึงเวลา {{endtime}}:00
+              </div>
+            </div>
+            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
-        <router-link to="/"><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></router-link>
       </div>
     </div>
   </div>
 </template>
 
 <style>
-.btn.checkout {
-  width: 130px;
-  height: 50px;
-  border-radius: 3%;
-  border: 1px solid #FFF;
-  font-size: 18px;
-  margin-bottom: 1rem;
-  background-color: red;
-  /*margin-left: 100px;*/
-}
-.clock-interval {
-  height: 100vh;
-  /*margin-left: 100px;*/
-  /*margin-top: 20rem;*/
-  /*position: absolute;*/
-  /*padding-top: 20px;
-  text-align: center;*/
-  background: url('../assets/clock.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .is-flex-tablet .rooms {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  .is-flex-mobile .rooms {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .clock-interval{
+    background: url('../assets/clock.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .is-flex-tablet .clock-interval{
+    background-size: 55%;
+    padding:20%;
+  }
+  .is-flex-mobile .clock-interval{
+    background-size: 80%;
+    padding-top: 40%;
+    padding-bottom: 40%;
+  }
+  .run-time{
+    color: black;
+  }
+  .is-flex-tablet .run-time {
+    font-size: 4em;
+    text-align: center;
+  }
+  .is-flex-tablet .status-timeout {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .is-flex-mobile .run-time {
+    font-size: 3em;
+    text-align: center;
+    width: 100vw;
+  }
+  .is-flex-mobile .status-timeout {
+    font-size: 1rem;
+    text-align: center;
+    width: 100vw;
+  }
+  @media (width:768px){
+    .is-flex-mobile .rooms {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .is-flex-mobile .run-time {
+      font-size: 7em;
+      text-align: center;
+      width: 100vw;
+    }
+    .is-flex-mobile .status-timeout {
+      font-size: 1.5em;
+      text-align: center;
+      width: 100vw;
+    }
+  }
+  .btn.checkout {
+    width: 130px;
+    height: 50px;
+    border-radius: 3%;
+    border: 1px solid #FFF;
+    font-size: 18px;
+  }
 </style>
 
 <script>
