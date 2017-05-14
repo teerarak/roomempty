@@ -121,10 +121,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-    <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
-=======
-
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
         <section class="ok">
@@ -140,7 +136,6 @@
         </section>
       </div>
     </div>
->>>>>>> 498da1b1968f63bcf4fb44fce79d152121d2fa70
   </div>
 </template>
 
