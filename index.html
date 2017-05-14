@@ -243,4 +243,13 @@
     }
     resolver.resolve(options, callback);
   </script>
+
+  <!--Disable Back Button-->
+  <script type="text/javascript" >
+      history.pushState(null, null, '');
+      window.addEventListener('popstate', function(event) {
+        history.pushState(null, null, '');
+      });
+  </script>
+
 </html>

@@ -29,8 +29,6 @@
           </a>
         </div>
       </div>
-      <!-- This "nav-menu" is hidden on mobile -->
-      <!-- Add the modifier "is-active" to display it on mobile -->
       <div class="nav-right nav-menu">
         <div class="nav-item" v-if="authorized">
           <img :src="profile.photoURL" alt="" width="10%">
@@ -231,9 +229,11 @@ export default {
       if (user) {
         vm.authorized = true
         vm.profile = user
+        console.log(vm.users)
         vm.users.forEach(function (element) {
           if (element.facebookId === vm.profile.uid) {
             vm.registed = false
+
             return 0
           } else {
             vm.registed = true

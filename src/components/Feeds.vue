@@ -27,55 +27,11 @@
                     {{room['.key']}}
                   </td>
                   <td>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('9')">09:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('10')">10:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('11')">11:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('12')">12:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('13')">13:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('14')">14:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('15')">15:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('16')">16:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('17')">17:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('18')">18:00</button>
-                      </a>
+                        <button type="button" class="button" style="backgroundColor:#00d1b2" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+                        <button type="button" class="button" style="backgroundColor:#ff2b56" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button>
+                      </a>{{ }}
                     </router-link>
                   </td>
                 </tr>
@@ -86,7 +42,6 @@
          </div>
       </div>
     </div>
-
     <div class="columns is-flex-tablet is-hidden-mobile">
       <div class="column">
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
@@ -112,55 +67,11 @@
                     {{room['.key']}}
                   </td>
                   <td>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
+                    <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('9')">09:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('10')">10:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('11')">11:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('12')">12:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('13')">13:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('14')">14:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('15')">15:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('16')">16:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('17')">17:00</button>
-                      </a>
-                    </router-link>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + time">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button is-primary" @click="setTime('18')">18:00</button>
-                      </a>
+                        <button type="button" class="button" style="backgroundColor:#00d1b2" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+                        <button type="button" class="button" style="backgroundColor:#ff2b56" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button>
+                      </a>{{ }}
                     </router-link>
                   </td>
                 </tr>
@@ -187,10 +98,6 @@ export default {
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
-    },
-    setTime (time) {
-      let vm = this
-      vm.time = time
     }
   }
 }

@@ -138,7 +138,7 @@ export default {
       })
       console.log(vm.item)
       for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
-        vm.item[i] = 'offline'
+        vm.item[i] = 'empty'
       }
       this.book(vm.item, vm.id)
       clearInterval(vm.timeID)
