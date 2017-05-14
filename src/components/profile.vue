@@ -15,7 +15,7 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books">ยกเลิกการจอง</button></center></router-link>
+            <router-link to="/"><center><button type="button" class="btn checkout" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
         <div class="columns is-flex-mobile is-hidden-tablet">
@@ -133,7 +133,7 @@ export default {
       })
       console.log(vm.item)
       for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
-        vm.item[i] = 'offline'
+        vm.item[i] = 'empty'
       }
       this.book(vm.item, vm.id)
       clearInterval(vm.timeID)
