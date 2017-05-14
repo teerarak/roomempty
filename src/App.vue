@@ -8,13 +8,27 @@
       </div>
       <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
       <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-      <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-      <!-- This "nav-menu" is hidden on mobile -->
-      <!-- Add the modifier "is-active" to display it on mobile -->
+      <div class="nav-right is-flex-mobile is-hidden-tablet">
+        <div v-if="ready">
+          <div v-if="authorized">
+            <div class="nav-item">
+              <a>
+                <button type="button" @click="logout" class="button is-danger logout">logout</button>
+              </a>
+            </div>
+          </div>
+          <div v-else>
+            <a class="nav-item">
+              <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
+            </a>
+          </div>
+        </div>
+        <div v-else>
+          <a class="nav-item">
+            <button type="button" name="button" class="button is-primary is-loading">login</button>
+          </a>
+        </div>
+      </div>
       <div class="nav-right nav-menu">
         <div class="nav-item" v-if="authorized">
           <img :src="profile.photoURL" alt="" width="10%">
@@ -25,12 +39,12 @@
         <div v-if="ready">
           <div v-if="authorized">
             <a class="nav-item">
-              <button type="button" @click="logout" class="button is-danger">logout</button>
+              <button type="button" @click="logout" class="button is-danger logout">logout</button>
             </a>
           </div>
           <div v-else>
             <a class="nav-item">
-              <button type="button" @click="login" class="button is-primary" data-target="modal">login</button>
+              <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
             </a>
           </div>
         </div>
@@ -41,9 +55,27 @@
         </div>
       </div>
     </nav>
+
+    <div class="home-text">
+        <h1 class="heading" data-target-resolver></h1>
+    </div>
+    <div class="columns is-flex-mobile is-hidden-tablet">
+      <div class="column ">
+            <section class="sec">
+              <a href="#" class="scroll-down on-mobile" address="true"></a>
+            </section>
+      </div>
+    </div>
+    <div class="columns is-flex-tablet is-hidden-mobile">
+      <div class="column">
+            <section class="sec">
+              <a href="#" class="scroll-down on-tablet" address="true"></a>
+            </section>
+      </div>
+    </div>
+
     <div v-show="authorized">
       <div v-show="registed">
-
         <div class="modal is-active">
           <div class="modal-background"></div>
           <div class="modal-content">
@@ -84,13 +116,31 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+=======
+
+    <div class="columns is-flex-mobile is-hidden-tablet">
+      <div class="column">
+        <section class="ok">
+          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+        </section>
+      </div>
+    </div>
+
+    <div class="columns is-flex-tablet is-hidden-mobile">
+      <div class="column">
+        <section class="ok2">
+          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+        </section>
+      </div>
+    </div>
+>>>>>>> 498da1b1968f63bcf4fb44fce79d152121d2fa70
   </div>
 </template>
 
@@ -192,14 +242,17 @@ export default {
       if (user) {
         vm.authorized = true
         vm.profile = user
-        console.log(vm.users)
       }
       vm.ready = true
     })
   }
 }
 </script>
+
 <style >
+  button.logout, button.login, button.is-loading {
+    margin: 0;
+  }
   .control button{
     float: right;
   }
