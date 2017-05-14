@@ -87,11 +87,9 @@
 
             </div>
           </div>
-          <button  class="modal-close"></button>
         </div>
       </div>
     </div>
-
     <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
   </div>
 </template>
@@ -118,7 +116,7 @@ export default {
       authorized: false,
       registed: false,
       rooms: [],
-      users: [],
+      users: {},
       stdId: '',
       faculty: '',
       checkedRows: [],
@@ -138,7 +136,17 @@ export default {
       this.registed = false
     },
     login () {
-      firebase.auth().signInWithRedirect(provider)
+      let vm = this
+      firebase.auth().signInWithPopup(provider)
+      vm.users.forEach(function (element) {
+        console.log(element)
+        if (element.facebookId === vm.profile.uid) {
+          vm.registed = false
+          return 0
+        } else {
+          vm.registed = true
+        }
+      })
     },
     logout () {
       let vm = this
@@ -184,14 +192,7 @@ export default {
       if (user) {
         vm.authorized = true
         vm.profile = user
-        vm.users.forEach(function (element) {
-          if (element.facebookId === vm.profile.uid) {
-            vm.registed = false
-            return 0
-          } else {
-            vm.registed = true
-          }
-        })
+        console.log(vm.users)
       }
       vm.ready = true
     })
