@@ -231,6 +231,7 @@ export default {
       if (user) {
         vm.authorized = true
         vm.profile = user
+        console.log(vm.users)
         vm.users.forEach(function (element) {
           if (element.facebookId === vm.profile.uid) {
             vm.registed = false
