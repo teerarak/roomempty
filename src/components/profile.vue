@@ -40,13 +40,6 @@
 </template>
 
 <style>
-  body{
-    height: 100vh;
-    background-color: #e0e4e7;
-  }
-  .profile .column {
-    background-color: #e0e4e7;
-  }
   .is-flex-tablet .rooms {
     text-align: center;
     font-size: 2.5rem;
@@ -94,10 +87,10 @@
     width: 100vw;
   }
   @media (width:768px){
-    body{
+    /*body{
       height: 100%;
       background-color: #e0e4e7;
-    }
+    }*/
     .is-flex-mobile .rooms {
       text-align: center;
       font-size: 2.5rem;
@@ -145,7 +138,7 @@ export default {
       })
       console.log(vm.item)
       for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
-        vm.item[i] = 'offline'
+        vm.item[i] = 'empty'
       }
       this.book(vm.item, vm.id)
       clearInterval(vm.timeID)

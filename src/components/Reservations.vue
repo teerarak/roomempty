@@ -84,7 +84,7 @@ export default {
         vm.item[i] = 'active'
         // console.log(i)
       }
-      console.log(vm.item)
+      console.log(vm.time)
       console.log(vm.id)
       this.book(vm.item, vm.id)
     },

@@ -11,6 +11,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
   <style>
+  .home-text {
+    font-family: 'Unica One', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: -webkit-linear-gradient(left top, #262626, #595959);
+    background: -o-linear-gradient(bottom right, #262626, #595959);
+    background: -moz-linear-gradient(bottom right, #262626, #595959);
+    background: linear-gradient(to bottom right, #262626, #595959);
+    height: 100vh ;
+    width: 100%;
+  }
+  .heading {
+    margin-bottom: 6rem;
+    color: #eee;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 10rem;
+  }
   .heading-rooms.on-tablet {
     margin-top: 2rem;
     font-size: 3rem;
@@ -44,7 +63,7 @@
     animation: bounce 2s infinite 2s;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
   }
   .scroll-down.on-tablet:before {
       position: absolute;
@@ -107,6 +126,11 @@
     }
     button {
       margin-bottom: 5px;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
     }
   </style>
 
