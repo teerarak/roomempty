@@ -188,6 +188,7 @@ export default {
         vm.users.forEach(function (element) {
           if (element.facebookId === vm.profile.uid) {
             vm.registed = false
+
             return 0
           } else {
             vm.registed = true
