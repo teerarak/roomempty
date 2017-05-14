@@ -11,20 +11,20 @@
       <div class="nav-right is-flex-mobile is-hidden-tablet">
         <div v-if="ready">
           <div v-if="authorized">
-            <div class="nav-item toggle">
+            <div class="nav-item">
               <a>
                 <button type="button" @click="logout" class="button is-danger logout">logout</button>
               </a>
             </div>
           </div>
           <div v-else>
-            <a class="nav-item toggle">
+            <a class="nav-item">
               <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
             </a>
           </div>
         </div>
         <div v-else>
-          <a class="nav-item toggle">
+          <a class="nav-item">
             <button type="button" name="button" class="button is-primary is-loading">login</button>
           </a>
         </div>
