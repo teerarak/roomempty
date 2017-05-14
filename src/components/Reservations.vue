@@ -5,6 +5,7 @@
         <router-link :to="'/'">
           <div class="modal-background"></div>
         </router-link>
+        <div class="columns is-flex-tablet is-hidden-mobile">
           <div class="modal-card">
             <header class="modal-card-head">
               <p class="modal-card-title">จำนวนชั่วโมงที่ต้องการจอง</p>
@@ -29,6 +30,33 @@
               <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
             </footer>
           </div>
+        </div>
+        <div class="columns is-flex-mobile is-hidden-tablet">
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">จำนวนชั่วโมงที่ต้องการจอง</p>
+            </header>
+            <section class="modal-card-body">
+              <div class="field has-addons has-addons-centered">
+                <p class="control">
+                  <a class="button is-danger" @click="minus">-</a>
+                </p>
+                <p class="control">
+                  <input class="input" style="text-align:center;" type="text" v-model="amount" placeholder="จำนวนชั่วโมง" disabled>
+                </p>
+                <p class="control">
+                  <a class="button is-success" @click="plus">+</a>
+                </p>
+              </div>
+            </section>
+            <footer class="modal-card-foot">
+              <router-link :to="'/profile/' + room['.key'] + '/' + time + '/' + amount">
+                <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
+              </router-link>
+              <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
+            </footer>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -76,14 +104,7 @@ export default {
 }
 </script>
 <style>
-  @media (min-width:1024px){
-    .modal-card{
-      width:35vw;
-    }
-  }
-  @media (max-width:1024px){
-    .modal-card{
-      width:45vw;
-    }
+  .is-flex-tablet .modal-card{
+    width:35vw;
   }
 </style>

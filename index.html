@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>emptyroom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>emptyroom</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" />
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -12,49 +12,28 @@
   </head>
   <style>
   .home-text {
-    background: -webkit-linear-gradient(left top, #262626, #595959); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #262626, #595959); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #262626, #595959); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #262626, #595959); /* Standard syntax */
-    height: 45rem;
-    max-width: 100%;
-   }
-  .heading {
-    color: #eee;
-    font-size: 7rem;
-    font-weight: 300;
-    text-transform: uppercase;
-  }
-  .container-fluid.home-text {
     font-family: 'Unica One', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-  }
-  .container-fluid.room-status {
-    background-color: white;
-    height: 50rem;
-    text-align: center;
-    padding-top: 10rem;
-  }
-  .table.status-rooms {
+    background: -webkit-linear-gradient(left top, #262626, #595959);
+    background: -o-linear-gradient(bottom right, #262626, #595959);
+    background: -moz-linear-gradient(bottom right, #262626, #595959);
+    background: linear-gradient(to bottom right, #262626, #595959);
+    height: 100vh ;
     width: 100%;
   }
-  .btn.start {
-    position: absolute;
-    top: 40rem;
-    bottom: 10px;
-    left: 50%;
-    margin-left: -50px;
-    width: 100px;
-    height: 50px;
-    border-radius: 3%;
-    border: 1px solid #FFF;
-    background-color: transparent;
-    color: #FFF;
-    font-size: 15px;
-    border-radius: 10%;
+  .heading {
+    margin-bottom: 6rem;
+    color: #eee;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 10rem;
+  }
+  .heading-rooms.on-tablet {
+    margin-top: 2rem;
+    font-size: 3rem;
+    text-align: center;
   }
   *,
   :after,
@@ -63,20 +42,19 @@
     margin: 0;
     padding: 0;
   }
-  .scroll-down {
+  .scroll-down.on-tablet {
     opacity: 1;
     -webkit-transition: all .5s ease-in 3s;
     transition: all .5s ease-in 3s;
   }
-
-  .scroll-down {
+  .scroll-down.on-tablet {
     position: absolute;
     bottom: 30px;
     left: 50%;
     margin-left: -16px;
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     border: 2px solid #FFF;
     background-size: 14px auto;
     border-radius: 50%;
@@ -85,9 +63,9 @@
     animation: bounce 2s infinite 2s;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
+    margin-bottom: 7rem;
   }
-
-  .scroll-down:before {
+  .scroll-down.on-tablet:before {
       position: absolute;
       top: calc(50% - 8px);
       left: calc(50% - 6px);
@@ -121,17 +99,59 @@
       transform: translateY(-5px);
     }
   }
-
+    .header p{
+      font-size: 60px;
+      margin-bottom: 100px;
+    }
+    .note.on-tablet {
+      margin-top: 5px;
+      display: inline-block;
+      float: right;
+    }
+    .boxnote.on-tablet {
+      /*margin-top: 1rem;*/
+      width:32px;
+      height:32px;
+      border-radius: 3px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    .note.textnote.on-tablet {
+      padding-top: 2px;
+      font-size: 15px;
+    }
+    table {
+      font-size: 24px;
+      margin-top: 2rem;
+    }
+    button {
+      margin-bottom: 5px;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
   </style>
+
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+
   <script>
   $(function() {
-    $('.scroll-down').click (function() {
-      // console.log('test');
+    $('.scroll-down.on-mobile').click (function() {
       $('html, body').animate({scrollTop: $('section.ok').offset().top }, 'slow');
+      return false;
+    });
+  });
+  </script>
+
+  <script>
+  $(function() {
+    $('.scroll-down.on-tablet').click (function() {
+      $('html, body').animate({scrollTop: $('section.ok2').offset().top }, 'slow');
       return false;
     });
   });
@@ -196,35 +216,21 @@
           }
         });
       };
-
       doResolverEffect(combinedOptions, callback);
     }
     }
-
-    /* Some GLaDOS quotes from Portal 2 chapter 9: The Part Where He Kills You
-    * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
-    */
     const strings = [
-    'EMPTY ROOM'
+    'TUTOR ROOM'
     ];
-
     let counter = 0;
-
     const options = {
-    // Initial position
     offset: 0,
-    // Timeout between each random character
     timeout: 5,
-    // Number of random characters to show
     iterations: 10,
-    // Random characters to pick from
     characters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'x', '#', '%', '&', '-', '+', '_', '?', '/', '\\', '='],
-    // String to resolve
     resolveString: strings[counter],
-    // The element
     element: document.querySelector('[data-target-resolver]')
     }
-    // Callback function when resolve completes
     function callback() {
     setTimeout(() => {
       counter ++;
