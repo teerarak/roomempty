@@ -15,6 +15,9 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
+            <div class="note">
+              <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
+            </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
         </div>
@@ -30,6 +33,9 @@
               <div class="status-timeout">
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
+            </div>
+            <div class="note">
+              <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
@@ -76,6 +82,9 @@
     font-size: 1rem;
     text-align: center;
   }
+  .is-flex-tablet .note {
+    font-size: 1rem;
+  }
   .is-flex-mobile .run-time {
     font-size: 3em;
     text-align: center;
@@ -85,6 +94,9 @@
     font-size: 1rem;
     text-align: center;
     width: 100vw;
+  }
+  .is-flex-mobile .note {
+    font-size: 0.8rem;
   }
   @media (width:768px){
     /*body{
@@ -105,11 +117,15 @@
       text-align: center;
       width: 100vw;
     }
+    .is-flex-mobile .note {
+      font-size: 1rem;
+    }
   }
   .checkout {
     width: 130px;
     height: 50px;
     font-size: 18px;
+    margin-top:1em;
   }
 </style>
 
