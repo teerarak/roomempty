@@ -17,13 +17,13 @@
           </div>
           <div v-else>
             <a class="nav-item">
-              <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
+              <button type="button" @click="login" class="button is-black login" data-target="modal">login</button>
             </a>
           </div>
         </div>
         <div v-else>
           <a class="nav-item">
-            <button type="button" name="button" class="button is-primary is-loading">login</button>
+            <button type="button" name="button" class="button is-black is-loading">login</button>
           </a>
         </div>
       </div>
@@ -42,13 +42,13 @@
           </div>
           <div v-else>
             <a class="nav-item">
-              <button type="button" @click="login" class="button is-primary login" data-target="modal">login</button>
+              <button type="button" @click="login" class="button is-black login" data-target="modal">login</button>
             </a>
           </div>
         </div>
         <div v-else>
           <a class="nav-item">
-            <button type="button" name="button" class="button is-primary is-loading">login</button>
+            <button type="button" name="button" class="button is-black is-loading">login</button>
           </a>
         </div>
       </div>
@@ -57,18 +57,14 @@
         <h1 class="heading" data-target-resolver></h1>
     </div>
     <div class="columns is-flex-mobile is-hidden-tablet">
-      <div class="column ">
-            <section class="sec">
-              <a href="#" class="scroll-down on-mobile" address="true"></a>
-            </section>
-      </div>
+      <section class="sec">
+        <a href="#" class="scroll-down on-mobile" address="true"></a>
+      </section>
     </div>
     <div class="columns is-flex-tablet is-hidden-mobile">
-      <div class="column">
-            <section class="sec">
-              <a href="#" class="scroll-down on-tablet" address="true"></a>
-            </section>
-      </div>
+      <section class="sec">
+        <a href="#" class="scroll-down on-tablet" address="true"></a>
+      </section>
     </div>
 
     <div v-show="authorized">
@@ -118,7 +114,8 @@
         </div>
       </div>
     </div>
-    <div class="columns is-flex-mobile is-hidden-tablet">
+
+    <div class="columns is-flex-mobile is-hidden-tablet" v-if="authorized">
       <div class="column">
         <section class="ok">
           <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
@@ -126,7 +123,7 @@
       </div>
     </div>
 
-    <div class="columns is-flex-tablet is-hidden-mobile">
+    <div class="columns is-flex-tablet is-hidden-mobile" v-if="authorized">
       <div class="column on-tablet">
         <section class="ok2">
           <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>

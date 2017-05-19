@@ -6,14 +6,6 @@
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-8 is-offset-2">
-                <center>
-                  <div class="note on-mobile">
-                    <div class="note boxnote on-mobile" style="background-color:#00d1b2;"></div>
-                    <div class="note textnote on-mobile">จองได้</div>
-                    <div class="note boxnote on-mobile" style="background-color:#ff2b56;"></div>
-                    <div class="note textnote on-mobile">จองไม่ได้</div>
-                  </div>
-                </center>
             <table class="table is-striped status-rooms" >
               <thead>
                 <tr>
@@ -29,8 +21,7 @@
                   <td>
                     <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button" style="backgroundColor:#00d1b2" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-
+                        <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
                       </a>{{ }}
                     </router-link>
                   </td>
@@ -47,37 +38,31 @@
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
           <div class="container is-fluid">
             <div class="columns">
-              <div class="column is-10 is-offset-1">
-                <div class="note on-tablet">
-                  <div class="note textnote on-tablet">จองไม่ได้</div>
-                  <div class="note boxnote on-tablet" style="background-color:#ff2b56;"></div>
-                  <div class="note textnote on-tablet">จองได้</div>
-                  <div class="note boxnote on-tablet" style="background-color:#00d1b2;"></div>
-                </div>
-            <table class="table is-striped status-rooms on-tablet" >
-              <thead>
-                <tr>
-                  <th><center>ห้อง</center></th>
-                  <th><center>เวลา</center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="room in rooms">
-                  <td>
-                    {{room['.key']}}
-                  </td>
-                  <td>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button" style="backgroundColor:#00d1b2" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                        <button type="button" class="button" style="backgroundColor:#ff2b56" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button>
-                      </a>{{ }}
-                    </router-link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-           </div>
+              <div class="column is-9 is-offset-1">
+              <table class="table is-striped status-rooms on-tablet" >
+                <thead>
+                  <tr>
+                    <th><center>ห้อง</center></th>
+                    <th><center>เวลา</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="room in rooms">
+                    <td>
+                      {{room['.key']}}
+                    </td>
+                    <td>
+                      <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
+                        <a data-target="modal">
+                          <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+                          <!-- <button type="button" class="button" style="backgroundColor:#f2f2f2" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button> -->
+                        </a>{{ }}
+                      </router-link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
          </div>
       </div>
@@ -201,9 +186,7 @@ export default {
   .table.status-rooms.on-tablet {
     font-size: 24px;
     width: 100%;
-  }
-  .button-borrow {
-    padding-left: 12px;
+    margin-left: 4rem;
   }
   button {
     margin-bottom: 5px;
