@@ -165,7 +165,6 @@ export default {
       let vm = this
       vm.now = new Date()
       vm.currentTime = vm.now.getHours()
-      console.log(vm.currentTime)
       if (vm.currentTime === vm.time) {
         if (vm.myTime.minute === '00') {
           vm.myTime.hour--

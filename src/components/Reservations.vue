@@ -82,15 +82,27 @@ export default {
       })
       for (let i = parseInt(time); i < parseInt(time) + vm.amount; i++) {
         vm.item[i] = 'active'
-        // console.log(i)
       }
-      console.log(vm.time)
-      console.log(vm.id)
-      this.book(vm.item, vm.id)
     },
     plus () {
       let vm = this
-      vm.amount++
+      let sumTime = parseInt(vm.time) + vm.amount
+      let end = 20
+      vm.rooms.forEach(function (element) {
+        if (vm.id === element['.key']) {
+          vm.item = element['.value']
+        }
+      })
+      for (let i = parseInt(vm.time); i < 20; i++) {
+        console.log(i + ' ' + vm.item[i])
+        if (vm.item[i] === 'active') {
+          end = i
+        }
+      }
+      if (sumTime < end) {
+        vm.amount++
+      }
+      console.log(sumTime + ' < ' + end)
     },
     minus () {
       let vm = this
