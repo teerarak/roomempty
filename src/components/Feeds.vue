@@ -30,7 +30,7 @@
                     <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                       <a class="button-borrow" data-target="modal">
                         <button type="button" class="button" style="backgroundColor:#00d1b2" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                        <button type="button" class="button" style="backgroundColor:#ff2b56" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button>
+
                       </a>{{ }}
                     </router-link>
                   </td>
@@ -47,14 +47,14 @@
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
           <div class="container is-fluid">
             <div class="columns">
-              <div class="column is-8 is-offset-2">
+              <div class="column is-10 is-offset-1">
                 <div class="note on-tablet">
                   <div class="note textnote on-tablet">จองไม่ได้</div>
                   <div class="note boxnote on-tablet" style="background-color:#ff2b56;"></div>
                   <div class="note textnote on-tablet">จองได้</div>
                   <div class="note boxnote on-tablet" style="background-color:#00d1b2;"></div>
                 </div>
-            <table class="table is-striped status-rooms" >
+            <table class="table is-striped status-rooms on-tablet" >
               <thead>
                 <tr>
                   <th><center>ห้อง</center></th>
@@ -108,6 +108,12 @@ export default {
   margin-top: 2rem;
   font-size: 2rem;
   text-align: center;
+}
+.heading-rooms.on-tablet {
+  margin-top: 2rem;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 *,
 :after,
@@ -192,9 +198,12 @@ export default {
   .note.textnote.on-mobile {
     font-size: 15px;
   }
-  table {
+  .table.status-rooms.on-tablet {
     font-size: 24px;
-    margin-top: 2rem;
+    width: 100%;
+  }
+  .button-borrow {
+    padding-left: 12px;
   }
   button {
     margin-bottom: 5px;

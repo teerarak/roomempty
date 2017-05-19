@@ -3,11 +3,9 @@
     <nav class="nav">
       <div class="nav-left">
         <a class="nav-item">
-          <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+          <img src="./assets/TTR.png" alt="Tutor Room">
         </a>
       </div>
-      <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-      <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
       <div class="nav-right is-flex-mobile is-hidden-tablet">
         <div v-if="ready">
           <div v-if="authorized">
@@ -55,7 +53,6 @@
         </div>
       </div>
     </nav>
-
     <div class="home-text">
         <h1 class="heading" data-target-resolver></h1>
     </div>
@@ -131,7 +128,7 @@
     </div>
 
     <div class="columns is-flex-tablet is-hidden-mobile">
-      <div class="column">
+      <div class="column on-tablet">
         <section class="ok2">
           <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
         </section>
@@ -250,5 +247,8 @@ export default {
   }
   .control button{
     float: right;
+  }
+  .nav {
+    background-color: #ebebe0;
   }
 </style>
