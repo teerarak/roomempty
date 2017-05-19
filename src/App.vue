@@ -74,23 +74,19 @@
           <div class="modal-content">
             <div class="box">
               <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">รหัสนักศึกษา</label>
-                </div>
                 <div class="field-body">
                   <div class="field is-grouped">
                     <p class="control is-expanded">
+                      <label >รหัสนักศึกษา</label><br>
                       <input class="input" type="text" v-model="stdId" placeholder="รหัสนักศึกษา" >
                     </p>
                   </div>
                 </div>
               </div>
               <div class="field is-horizontal has-addons">
-                <div class="field-label is-normal">
-                  <label class="label">คณะ</label>
-                </div>
                 <div class="field-body">
                 <p class="control is-expanded">
+                  <label class="s">คณะ</label><br>
                   <span class="select is-fullwidth">
                     <select v-model="faculty">
                       <option selected>คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
@@ -222,14 +218,19 @@ export default {
       if (user) {
         vm.authorized = true
         vm.profile = user
+        let check = 0
         vm.users.forEach(function (element) {
+          console.log(element.facebookId + ' = ' + vm.profile.uid)
           if (element.facebookId === vm.profile.uid) {
-            vm.registed = false
-            return 0
+            check = 1
           } else {
             vm.registed = true
           }
         })
+        if (check === 1) {
+          console.log('kuygot')
+          vm.registed = false
+        }
       }
       vm.ready = true
     })
