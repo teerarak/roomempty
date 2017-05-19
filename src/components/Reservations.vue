@@ -83,6 +83,7 @@ export default {
       for (let i = parseInt(time); i < parseInt(time) + vm.amount; i++) {
         vm.item[i] = 'active'
       }
+      vm.book(vm.item, vm.id)
     },
     plus () {
       let vm = this
