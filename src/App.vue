@@ -118,7 +118,6 @@
         </div>
       </div>
     </div>
-
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
         <section class="ok">
