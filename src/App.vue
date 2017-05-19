@@ -78,9 +78,6 @@
           <div class="modal-content">
             <div class="box">
               <div class="field is-horizontal">
-                <!-- <div class="field-label is-normal">
-                  <label class="label">รหัสนักศึกษา</label>
-                </div> -->
                 <div class="field-body">
                   <div class="field is-grouped">
                     <p class="control is-expanded">
@@ -91,9 +88,6 @@
                 </div>
               </div>
               <div class="field is-horizontal has-addons">
-                <!-- <div class="field-label is-normal">
-                  <label class="label">คณะ</label>
-                </div> -->
                 <div class="field-body">
                 <p class="control is-expanded">
                   <label class="s">คณะ</label><br>
