@@ -36,6 +36,7 @@
             </div>
             <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
+
             </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
@@ -143,7 +144,9 @@ export default {
       item: [],
       endtime: parseInt(this.time) + parseInt(this.amount),
       now: '',
-      currentTime: ''
+      currentTime: '',
+      test: 0,
+      status: true
     }
   },
   methods: {
@@ -159,7 +162,7 @@ export default {
         vm.item[i] = 'empty'
       }
       this.book(vm.item, vm.id)
-      clearInterval(vm.timeID)
+      vm.status = false
     },
     timer () {
       let vm = this
@@ -177,14 +180,26 @@ export default {
           }
         }
         if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
-          clearInterval(vm.timeID)
+          vm.status = false
           alert('timeout')
         }
       }
+    },
+    testStop () {
+      let vm = this
+      vm.test++
+      // if (vm.test > 40) {
+      //   clearInterval(vm.timeID)
+      // }
+      console.log(vm.test)
     }
   },
   mounted () {
-    this.timeID = setInterval(this.timer, 1000)
+    if (this.status) {
+      this.timeID = setInterval(this.testStop, 1000)
+    } else {
+      clearInterval(this.timeID)
+    }
   }
 }
 </script>
