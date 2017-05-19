@@ -125,7 +125,9 @@ export default {
       },
       timeID: '',
       item: [],
-      endtime: parseInt(this.time) + parseInt(this.amount)
+      endtime: parseInt(this.time) + parseInt(this.amount),
+      now: '',
+      currentTime: ''
     }
   },
   methods: {
@@ -145,19 +147,24 @@ export default {
     },
     timer () {
       let vm = this
-      if (vm.myTime.minute === '00') {
-        vm.myTime.hour--
-        vm.myTime.hour = '0' + vm.myTime.hour
-        vm.myTime.minute = 59
-      } else {
-        vm.myTime.minute--
-        if (vm.myTime.minute < 10) {
-          vm.myTime.minute = '0' + vm.myTime.minute
+      vm.now = new Date()
+      vm.currentTime = vm.now.getMinutes()
+      console.log(vm.currentTime)
+      if (vm.currentTime === vm.time) {
+        if (vm.myTime.minute === '00') {
+          vm.myTime.hour--
+          vm.myTime.hour = '0' + vm.myTime.hour
+          vm.myTime.minute = 59
+        } else {
+          vm.myTime.minute--
+          if (vm.myTime.minute < 10) {
+            vm.myTime.minute = '0' + vm.myTime.minute
+          }
         }
-      }
-      if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
-        clearInterval(vm.timeID)
-        alert('timeout')
+        if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
+          clearInterval(vm.timeID)
+          alert('timeout')
+        }
       }
     }
   },
