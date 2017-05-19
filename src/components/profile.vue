@@ -36,7 +36,6 @@
             </div>
             <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
-
             </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
@@ -145,8 +144,7 @@ export default {
       endtime: parseInt(this.time) + parseInt(this.amount),
       now: '',
       currentTime: '',
-      test: 0,
-      status: true
+      test: 0
     }
   },
   methods: {
@@ -162,44 +160,34 @@ export default {
         vm.item[i] = 'empty'
       }
       this.book(vm.item, vm.id)
-      vm.status = false
+      clearInterval(vm.timeID)
+      clearInterval((vm.timeID - 1))
     },
     timer () {
       let vm = this
       vm.now = new Date()
       vm.currentTime = vm.now.getHours()
-      if (vm.currentTime === vm.time) {
-        if (vm.myTime.minute === '00') {
-          vm.myTime.hour--
-          vm.myTime.hour = '0' + vm.myTime.hour
-          vm.myTime.minute = 59
-        } else {
-          vm.myTime.minute--
-          if (vm.myTime.minute < 10) {
-            vm.myTime.minute = '0' + vm.myTime.minute
-          }
-        }
-        if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
-          vm.status = false
-          alert('timeout')
+      console.log('test')
+      if (vm.myTime.minute === '00') {
+        vm.myTime.hour--
+        vm.myTime.hour = '0' + vm.myTime.hour
+        vm.myTime.minute = 59
+      } else {
+        vm.myTime.minute--
+        if (vm.myTime.minute < 10) {
+          vm.myTime.minute = '0' + vm.myTime.minute
         }
       }
-    },
-    testStop () {
-      let vm = this
-      vm.test++
-      // if (vm.test > 40) {
-      //   clearInterval(vm.timeID)
-      // }
-      console.log(vm.test)
+      if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
+        clearInterval(vm.timeID)
+        clearInterval((vm.timeID - 1))
+        alert('timeout')
+      }
     }
   },
   mounted () {
-    if (this.status) {
-      this.timeID = setInterval(this.testStop, 1000)
-    } else {
-      clearInterval(this.timeID)
-    }
+    let vm = this
+    vm.timeID = setInterval(this.timer, 1000)
   }
 }
 </script>
