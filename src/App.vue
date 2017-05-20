@@ -216,6 +216,7 @@ export default {
       let vm = this
       vm.day = new Date()
       vm.realHour = vm.day.getHours()
+      console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
         if (vm.realHour === 0) {
