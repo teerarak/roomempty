@@ -51,7 +51,7 @@
             </section>
             <footer class="modal-card-foot">
               <router-link :to="'/profile/' + room['.key'] + '/' + time + '/' + amount">
-                <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
+                <a class="button" style="backgroundColor:#d9d9d9" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
               </router-link>
               <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
             </footer>
