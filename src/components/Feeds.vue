@@ -6,7 +6,7 @@
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-8 is-offset-2">
-            <table class="table is-striped status-rooms" >
+            <table class="table is-striped status-rooms" v-if="have">
               <thead>
                 <tr>
                   <th><center>ห้อง</center></th>
@@ -16,7 +16,7 @@
               <tbody>
                 <tr v-for="room in rooms">
                   <td>
-                    {{room['.key']}}
+                    <center>{{room['.key']}}</center>
                   </td>
                   <td>
                     <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
@@ -28,6 +28,9 @@
                 </tr>
               </tbody>
             </table>
+            <div v-else>
+              <h1>Hello</h1>
+            </div>
            </div>
           </div>
          </div>
@@ -39,7 +42,7 @@
           <div class="container is-fluid">
             <div class="columns">
               <div class="column is-9 is-offset-1">
-              <table class="table is-striped status-rooms on-tablet" >
+              <table class="table is-striped status-rooms on-tablet" v-if="have">
                 <thead>
                   <tr>
                     <th><center>ห้อง</center></th>
@@ -49,7 +52,7 @@
                 <tbody>
                   <tr v-for="room in rooms">
                     <td>
-                      {{room['.key']}}
+                      <center>{{room['.key']}}</center>
                     </td>
                     <td>
                       <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
@@ -62,6 +65,9 @@
                   </tr>
                 </tbody>
               </table>
+              <div v-else>
+                <h1>{{checkRoom}}</h1>
+              </div>
             </div>
           </div>
          </div>
@@ -77,12 +83,28 @@ export default {
   name: 'Feeds',
   data () {
     return {
-      time: 0
+      time: 0,
+      count: 0,
+      have: false
     }
   },
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
+    }
+  },
+  computed: {
+    checkRoom () {
+      let vm = this
+      vm.count = 0
+      vm.rooms.forEach(function (element) {
+        for (let b = 9; b < 20; b++) {
+          if (element['.value'][b] === 'offline') {
+            vm.count++
+          }
+        }
+      })
+      return vm.count
     }
   }
 }

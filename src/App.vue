@@ -215,7 +215,7 @@ export default {
     removeRoom () {
       let vm = this
       vm.day = new Date()
-      // vm.realHour = 0
+      // vm.realHour = 19
       vm.realHour = vm.day.getHours()
       console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
@@ -225,7 +225,9 @@ export default {
             vm.mockItem[a] = 'empty'
           }
         } else {
-          vm.mockItem[vm.realHour] = 'offline'
+          if (vm.realHour <= 19) {
+            vm.mockItem[vm.realHour] = 'offline'
+          }
         }
         vm.book(vm.mockItem, element['.key'])
       })
