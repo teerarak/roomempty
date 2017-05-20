@@ -21,7 +21,7 @@
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
           <div class="notification is-danger" v-show="notification">
-            <a href="#" class="delete"> </a>
+            <a href="#" class="delete"></a>
             หมดเวลาแล้ว
           </div>
         </div>
