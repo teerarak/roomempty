@@ -224,9 +224,7 @@ export default {
             vm.mockItem[a] = 'empty'
           }
         } else {
-          if (vm.mockItem[vm.realHour] === 'empty') {
-            vm.mockItem[vm.realHour] = 'offline'
-          }
+          vm.mockItem[vm.realHour] = 'offline'
         }
         vm.book(vm.mockItem, element['.key'])
       })
