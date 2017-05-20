@@ -69,7 +69,8 @@ export default {
   data () {
     return {
       item: [],
-      amount: 1
+      amount: 1,
+      check: 1
     }
   },
   methods: {
@@ -89,6 +90,7 @@ export default {
       let vm = this
       let sumTime = parseInt(vm.time) + vm.amount
       let end = 20
+      let done = 3
       vm.rooms.forEach(function (element) {
         if (vm.id === element['.key']) {
           vm.item = element['.value']
@@ -103,7 +105,11 @@ export default {
       if (sumTime < end) {
         vm.amount++
       }
+      if (vm.check < done) {
+        vm.check++
+      }
       console.log(sumTime + ' < ' + end)
+      console.log(vm.check)
     },
     minus () {
       let vm = this

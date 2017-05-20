@@ -190,7 +190,7 @@ export default {
   },
   mounted () {
     let vm = this
-    vm.timeID = setInterval(this.timer, 1000)
+    vm.timeID = setInterval(this.timer, 10000)
   }
 }
 </script>
