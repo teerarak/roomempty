@@ -155,7 +155,10 @@ export default {
       stdId: '',
       faculty: '',
       checkedRows: [],
-      selected: {}
+      selected: {},
+      day: '',
+      realHour: 0,
+      mockItem: []
     }
   },
   methods: {
@@ -208,6 +211,15 @@ export default {
           this.$firebaseRefs.rooms.child('Tutor' + (n + 1)).set(room)
         }
       }
+    },
+    removeRoom () {
+      let vm = this
+      vm.day = new Date()
+      vm.realHour = 9
+      vm.rooms.forEach(function (element) {
+        vm.mockItem.push(element['.key'])
+      })
+      console.log(vm.mockItem)
     }
   },
   mounted () {
@@ -234,6 +246,7 @@ export default {
       }
       vm.ready = true
     })
+    // setInterval(this.removeRoom, 1000)
   }
 }
 </script>

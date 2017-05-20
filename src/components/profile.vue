@@ -170,20 +170,21 @@ export default {
       console.log(vm.currentTime)
       console.log(parseInt(vm.time))
       if (parseInt(vm.time) === vm.currentTime) {
-        if (vm.myTime.minute === '00') {
-          vm.myTime.hour--
-          vm.myTime.hour = '0' + vm.myTime.hour
-          vm.myTime.minute = 59
-        } else {
-          vm.myTime.minute--
-          if (vm.myTime.minute < 10) {
-            vm.myTime.minute = '0' + vm.myTime.minute
-          }
-        }
         if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
           clearInterval(vm.timeID)
           clearInterval((vm.timeID - 1))
           alert('timeout')
+        } else {
+          if (vm.myTime.minute === '00') {
+            vm.myTime.hour--
+            vm.myTime.hour = '0' + vm.myTime.hour
+            vm.myTime.minute = 59
+          } else {
+            vm.myTime.minute--
+            if (vm.myTime.minute < 10) {
+              vm.myTime.minute = '0' + vm.myTime.minute
+            }
+          }
         }
       }
     }
