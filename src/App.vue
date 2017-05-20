@@ -215,6 +215,7 @@ export default {
     removeRoom () {
       let vm = this
       vm.day = new Date()
+      // vm.realHour = 0
       vm.realHour = vm.day.getHours()
       console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
