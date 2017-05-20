@@ -18,7 +18,9 @@
             <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
-            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+            <div v-show="reveal">
+              <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+            </div>
           </div>
           <div class="notification is-danger" v-show="notification">
             <a href="#" class="delete"></a>
@@ -41,10 +43,12 @@
             <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
-            <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+            <div v-show="reveal">
+              <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+            </div>
           </div>
           <div class="notification is-danger" v-show="notification">
-            <a href="#" class="delete"></a>
+            <a href="#" class="delete" @click="books(time)"></a>
             หมดเวลาแล้ว
           </div>
         </div>
@@ -186,7 +190,8 @@ export default {
       endtime: parseInt(this.time) + parseInt(this.amount),
       now: '',
       currentTime: '',
-      test: 0
+      test: 0,
+      reveal: true
     }
   },
   methods: {
@@ -208,25 +213,28 @@ export default {
     timer () {
       let vm = this
       vm.now = new Date()
+      // vm.currentTime = 17
       vm.currentTime = vm.now.getHours()
       console.log(vm.currentTime)
       console.log(parseInt(vm.time))
       if (parseInt(vm.time) === vm.currentTime) {
-        if (vm.myTime.minute === '00') {
-          vm.myTime.hour--
-          vm.myTime.hour = '0' + vm.myTime.hour
-          vm.myTime.minute = 59
-        } else {
-          vm.myTime.minute--
-          if (vm.myTime.minute < 10) {
-            vm.myTime.minute = '0' + vm.myTime.minute
-          }
-        }
+        vm.reveal = false
         if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
           clearInterval(vm.timeID)
           clearInterval((vm.timeID - 1))
           vm.notification = true
           // alert('timeout')
+        } else {
+          if (vm.myTime.minute === '00') {
+            vm.myTime.hour--
+            vm.myTime.hour = '0' + vm.myTime.hour
+            vm.myTime.minute = 59
+          } else {
+            vm.myTime.minute--
+            if (vm.myTime.minute < 10) {
+              vm.myTime.minute = '0' + vm.myTime.minute
+            }
+          }
         }
       }
     }
