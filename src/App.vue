@@ -215,11 +215,20 @@ export default {
     removeRoom () {
       let vm = this
       vm.day = new Date()
-      vm.realHour = 9
+      vm.realHour = vm.day.getHours()
       vm.rooms.forEach(function (element) {
-        vm.mockItem.push(element['.key'])
+        vm.mockItem = (element['.value'])
+        if (vm.realHour === 0) {
+          for (let a = 9; a < 20; a++) {
+            vm.mockItem[a] = 'empty'
+          }
+        } else {
+          if (vm.mockItem[vm.realHour] === 'empty') {
+            vm.mockItem[vm.realHour] = 'offline'
+          }
+        }
+        vm.book(vm.mockItem, element['.key'])
       })
-      console.log(vm.mockItem)
     }
   },
   mounted () {
@@ -246,7 +255,7 @@ export default {
       }
       vm.ready = true
     })
-    // setInterval(this.removeRoom, 1000)
+    setInterval(this.removeRoom, 1000)
   }
 }
 </script>

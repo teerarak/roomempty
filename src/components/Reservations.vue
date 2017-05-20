@@ -102,6 +102,9 @@ export default {
       }
       if (sumTime < end) {
         vm.amount++
+        if (vm.amount > 3) {
+          vm.amount = 3
+        }
       }
       console.log(sumTime + ' < ' + end)
     },
