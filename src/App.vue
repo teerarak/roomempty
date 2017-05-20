@@ -223,11 +223,12 @@ export default {
             vm.mockItem[a] = 'empty'
           }
         } else {
-          vm.mockItem[vm.realHour] = 'offline'
+          if (vm.mockItem[vm.realHour] === 'empty') {
+            vm.mockItem[vm.realHour] = 'offline'
+          }
         }
         vm.book(vm.mockItem, element['.key'])
       })
-      console.log(vm.mockItem)
     }
   },
   mounted () {
