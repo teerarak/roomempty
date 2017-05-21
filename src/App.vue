@@ -215,17 +215,17 @@ export default {
     removeRoom () {
       let vm = this
       vm.day = new Date()
-      // vm.realHour = 19
+      // vm.realHour = 9
       vm.realHour = vm.day.getHours()
       console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
-        if (vm.realHour === 0) {
+        if (vm.realHour >= 0 && vm.realHour < 9) {
           for (let a = 9; a < 20; a++) {
             vm.mockItem[a] = 'empty'
           }
         } else {
-          if (vm.realHour <= 19) {
+          if (vm.realHour < 20) {
             vm.mockItem[vm.realHour] = 'offline'
           }
         }
