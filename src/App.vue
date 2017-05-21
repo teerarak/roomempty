@@ -190,21 +190,42 @@ export default {
     book (room, id) {
       this.$firebaseRefs.rooms.child(id).set(room)
     },
-    Booking (startTime, room, endTime) {
+    Booking (startTime, room, endTime, status) {
       let vm = this
       let currentdate = new Date()
       let datetime = currentdate.toLocaleDateString()
-      vm.users.forEach(function (element) {
-        if (element.facebookId === vm.profile.uid) {
-          vm.$firebaseRefs.booking.push({
-            stdId: element.stdId,
-            room: room,
-            startTime: startTime,
-            endTime: endTime,
-            date: datetime
-          })
-        }
-      })
+      console.log(datetime)
+      if (status === 'active') {
+        vm.users.forEach(function (element) {
+          if (element.facebookId === vm.profile.uid) {
+            vm.$firebaseRefs.booking.push({
+              stdId: element.stdId,
+              facebookId: vm.profile.uid,
+              room: room,
+              startTime: startTime,
+              endTime: endTime,
+              date: datetime,
+              status: status
+            })
+            console.log('kuy')
+          }
+        })
+      } else {
+        vm.booking.forEach(function (element) {
+          if (element.room === room && element.startTime === startTime && element.endTime === endTime && element.facebookId === vm.profile.uid) {
+            vm.$firebaseRefs.booking.child(element['.key']).set({
+              stdId: element.stdId,
+              facebookId: vm.profile.uid,
+              room: room,
+              startTime: startTime,
+              endTime: endTime,
+              date: datetime,
+              status: status
+            })
+            console.log(element['.key'] + ' ' + element.room)
+          }
+        })
+      }
     },
     clear () {
       let vm = this

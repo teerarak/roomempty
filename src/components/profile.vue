@@ -176,7 +176,7 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book', 'time', 'amount'],
+  props: ['rooms', 'id', 'book', 'time', 'amount', 'booking'],
   name: 'profile',
   data () {
     return {
@@ -205,7 +205,9 @@ export default {
       for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
         vm.item[i] = 'empty'
       }
-      this.book(vm.item, vm.id)
+      console.log(parseInt(time) + parseInt(vm.amount))
+      vm.booking(time, vm.id, parseInt(time) + parseInt(vm.amount), 'cancle')
+      vm.book(vm.item, vm.id)
       clearInterval(vm.timeID)
       clearInterval((vm.timeID - 1))
     },

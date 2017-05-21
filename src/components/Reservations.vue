@@ -84,7 +84,7 @@ export default {
       for (let i = parseInt(time); i < endTime; i++) {
         vm.item[i] = 'active'
       }
-      vm.booking(time, vm.id, endTime)
+      vm.booking(time, vm.id, endTime, 'active')
       vm.book(vm.item, vm.id)
     },
     plus () {
