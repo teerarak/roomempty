@@ -85,7 +85,7 @@ export default {
     return {
       time: 0,
       count: 0,
-      have: false
+      have: true
     }
   },
   methods: {
