@@ -202,7 +202,6 @@ export default {
           vm.item = (element['.value'])
         }
       })
-      console.log(vm.item)
       for (let i = parseInt(time); i < parseInt(time) + parseInt(vm.amount); i++) {
         vm.item[i] = 'empty'
       }
@@ -215,8 +214,6 @@ export default {
       vm.now = new Date()
       // vm.currentTime = 17
       vm.currentTime = vm.now.getHours()
-      console.log(vm.currentTime)
-      console.log(parseInt(vm.time))
       if (parseInt(vm.time) === vm.currentTime) {
         vm.reveal = false
         if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {

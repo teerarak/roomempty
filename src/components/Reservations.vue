@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book', 'time'],
+  props: ['rooms', 'id', 'book', 'time', 'booking'],
   name: 'Reservations',
   data () {
     return {
@@ -75,14 +75,16 @@ export default {
   methods: {
     books (time) {
       let vm = this
+      let endTime = parseInt(time) + vm.amount
       vm.rooms.forEach(function (element) {
         if (vm.id === element['.key']) {
           vm.item = element['.value']
         }
       })
-      for (let i = parseInt(time); i < parseInt(time) + vm.amount; i++) {
+      for (let i = parseInt(time); i < endTime; i++) {
         vm.item[i] = 'active'
       }
+      vm.booking(time, vm.id, endTime)
       vm.book(vm.item, vm.id)
     },
     plus () {

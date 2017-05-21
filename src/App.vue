@@ -114,7 +114,7 @@
     <div class="columns is-flex-mobile is-hidden-tablet" v-if="authorized">
       <div class="column">
         <section class="ok">
-          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -122,7 +122,7 @@
     <div class="columns is-flex-tablet is-hidden-mobile" v-if="authorized">
       <div class="column on-tablet">
         <section class="ok2">
-          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -152,6 +152,7 @@ export default {
       registed: false,
       rooms: [],
       users: {},
+      booking: [],
       stdId: '',
       faculty: '',
       checkedRows: [],
@@ -188,6 +189,22 @@ export default {
     },
     book (room, id) {
       this.$firebaseRefs.rooms.child(id).set(room)
+    },
+    Booking (startTime, room, endTime) {
+      let vm = this
+      let currentdate = new Date()
+      let datetime = currentdate.toLocaleDateString()
+      vm.users.forEach(function (element) {
+        if (element.facebookId === vm.profile.uid) {
+          vm.$firebaseRefs.booking.push({
+            stdId: element.stdId,
+            room: room,
+            startTime: startTime,
+            endTime: endTime,
+            date: datetime
+          })
+        }
+      })
     },
     clear () {
       let vm = this
@@ -237,13 +254,13 @@ export default {
     let vm = this
     vm.$bindAsArray('rooms', db.ref('Rooms').orderByKey())
     vm.$bindAsArray('users', db.ref('Users'))
+    vm.$bindAsArray('booking', db.ref('Booking'))
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         vm.authorized = true
         vm.profile = user
         let check = 0
         vm.users.forEach(function (element) {
-          console.log(element.facebookId + ' = ' + vm.profile.uid)
           if (element.facebookId === vm.profile.uid) {
             check = 1
           } else {
@@ -251,7 +268,6 @@ export default {
           }
         })
         if (check === 1) {
-          console.log('kuygot')
           vm.registed = false
         }
       }
