@@ -258,14 +258,8 @@ export default {
       console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
-        if (vm.realHour >= 0 && vm.realHour < 9) {
-          for (let a = 9; a < 19; a++) {
-            vm.mockItem[a] = 'empty'
-          }
-        } else {
-          if (vm.realHour < 19) {
-            vm.mockItem[vm.realHour] = 'offline'
-          }
+        for (let a = 9; a < vm.realHour; a++) {
+          vm.mockItem[a] = 'offline'
         }
         vm.book(vm.mockItem, element['.key'])
       })
