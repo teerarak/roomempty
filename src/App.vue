@@ -259,7 +259,9 @@ export default {
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
         for (let a = 9; a < vm.realHour; a++) {
-          vm.mockItem[a] = 'offline'
+          if (a < 19) {
+            vm.mockItem[a] = 'offline'
+          }
         }
         vm.book(vm.mockItem, element['.key'])
       })
