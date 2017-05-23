@@ -239,9 +239,9 @@ export default {
         15: 'empty',
         16: 'empty',
         17: 'empty',
-        18: 'empty',
-        19: 'empty'
+        18: 'empty'
       }
+      console.log('test')
       for (var n = 0; n < vm.rooms.length; n++) {
         if (n < 9) {
           this.$firebaseRefs.rooms.child('Tutor' + ('0' + (n + 1))).set(room)
@@ -258,7 +258,7 @@ export default {
       console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
-        for (let a = 9; a < vm.realHour; a++) {
+        for (let a = 9; a <= vm.realHour; a++) {
           if (a < 19) {
             vm.mockItem[a] = 'offline'
           }
@@ -290,7 +290,7 @@ export default {
       }
       vm.ready = true
     })
-    setInterval(this.removeRoom, 1000)
+    setInterval(vm.removeRoom, 1000)
   }
 }
 </script>
