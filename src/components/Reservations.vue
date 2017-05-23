@@ -51,7 +51,7 @@
             </section>
             <footer class="modal-card-foot">
               <router-link :to="'/profile/' + room['.key'] + '/' + time + '/' + amount">
-                <a class="button is-success" @click="books(time)" style="padding-left:18px; padding-right:18px;">จอง</a>
+                <a class="button" style="backgroundColor:#d9d9d9; padding-left:18px; padding-right:18px;" @click="books(time)">จอง</a>
               </router-link>
               <a href="#" class="button" style="margin-left:15px;">ยกเลิก</a>
             </footer>
@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book', 'time'],
+  props: ['rooms', 'id', 'book', 'time', 'booking'],
   name: 'Reservations',
   data () {
     return {
@@ -75,14 +75,16 @@ export default {
   methods: {
     books (time) {
       let vm = this
+      let endTime = parseInt(time) + vm.amount
       vm.rooms.forEach(function (element) {
         if (vm.id === element['.key']) {
           vm.item = element['.value']
         }
       })
-      for (let i = parseInt(time); i < parseInt(time) + vm.amount; i++) {
+      for (let i = parseInt(time); i < endTime; i++) {
         vm.item[i] = 'active'
       }
+      vm.booking(time, vm.id, endTime, 'active')
       vm.book(vm.item, vm.id)
     },
     plus () {

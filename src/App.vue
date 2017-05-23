@@ -3,7 +3,7 @@
     <nav class="nav">
       <div class="nav-left">
         <a class="nav-item">
-          <img src="./assets/TTR.png" alt="Tutor Room">
+          <img src="./assets/ttr2.png" alt="Tutor Room">
         </a>
       </div>
       <div class="nav-right is-flex-mobile is-hidden-tablet">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div v-else>
-            <a class="nav-item">
+            <a class="nav-item auto-load-window">
               <button type="button" @click="login" class="button is-black login" data-target="modal">login</button>
             </a>
           </div>
@@ -56,13 +56,14 @@
     <div class="home-text">
         <h1 class="heading" data-target-resolver></h1>
     </div>
+    <h1 class="heading" data-target-resolver></h1>
     <div class="columns is-flex-mobile is-hidden-tablet">
-      <section class="sec">
+      <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down on-mobile" address="true"></a>
       </section>
     </div>
     <div class="columns is-flex-tablet is-hidden-mobile">
-      <section class="sec">
+      <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down on-tablet" address="true"></a>
       </section>
     </div>
@@ -114,7 +115,7 @@
     <div class="columns is-flex-mobile is-hidden-tablet" v-if="authorized">
       <div class="column">
         <section class="ok">
-          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -122,7 +123,7 @@
     <div class="columns is-flex-tablet is-hidden-mobile" v-if="authorized">
       <div class="column on-tablet">
         <section class="ok2">
-          <router-view :rooms="rooms" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -152,6 +153,7 @@ export default {
       registed: false,
       rooms: [],
       users: {},
+      booking: [],
       stdId: '',
       faculty: '',
       checkedRows: [],
@@ -189,6 +191,43 @@ export default {
     book (room, id) {
       this.$firebaseRefs.rooms.child(id).set(room)
     },
+    Booking (startTime, room, endTime, status) {
+      let vm = this
+      let currentdate = new Date()
+      let datetime = currentdate.toLocaleDateString()
+      console.log(datetime)
+      if (status === 'active') {
+        vm.users.forEach(function (element) {
+          if (element.facebookId === vm.profile.uid) {
+            vm.$firebaseRefs.booking.push({
+              stdId: element.stdId,
+              facebookId: vm.profile.uid,
+              room: room,
+              startTime: startTime,
+              endTime: endTime,
+              date: datetime,
+              status: status
+            })
+            console.log('kuy')
+          }
+        })
+      } else {
+        vm.booking.forEach(function (element) {
+          if (element.room === room && element.startTime === startTime && element.endTime === endTime && element.facebookId === vm.profile.uid) {
+            vm.$firebaseRefs.booking.child(element['.key']).set({
+              stdId: element.stdId,
+              facebookId: vm.profile.uid,
+              room: room,
+              startTime: startTime,
+              endTime: endTime,
+              date: datetime,
+              status: status
+            })
+            console.log(element['.key'] + ' ' + element.room)
+          }
+        })
+      }
+    },
     clear () {
       let vm = this
       var room = {
@@ -215,17 +254,13 @@ export default {
     removeRoom () {
       let vm = this
       vm.day = new Date()
+      // vm.realHour = 9
       vm.realHour = vm.day.getHours()
+      console.log(vm.realHour)
       vm.rooms.forEach(function (element) {
         vm.mockItem = (element['.value'])
-        if (vm.realHour === 0) {
-          for (let a = 9; a < 20; a++) {
-            vm.mockItem[a] = 'empty'
-          }
-        } else {
-          if (vm.mockItem[vm.realHour] === 'empty') {
-            vm.mockItem[vm.realHour] = 'offline'
-          }
+        for (let a = 9; a < vm.realHour; a++) {
+          vm.mockItem[a] = 'offline'
         }
         vm.book(vm.mockItem, element['.key'])
       })
@@ -235,13 +270,13 @@ export default {
     let vm = this
     vm.$bindAsArray('rooms', db.ref('Rooms').orderByKey())
     vm.$bindAsArray('users', db.ref('Users'))
+    vm.$bindAsArray('booking', db.ref('Booking'))
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         vm.authorized = true
         vm.profile = user
         let check = 0
         vm.users.forEach(function (element) {
-          console.log(element.facebookId + ' = ' + vm.profile.uid)
           if (element.facebookId === vm.profile.uid) {
             check = 1
           } else {
@@ -249,7 +284,6 @@ export default {
           }
         })
         if (check === 1) {
-          console.log('kuygot')
           vm.registed = false
         }
       }
