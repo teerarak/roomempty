@@ -20,6 +20,10 @@
             </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
           </div>
+          <div class="notification is-danger" v-show="notification">
+            <a href="#" class="delete"></a>
+            หมดเวลาแล้ว
+          </div>
         </div>
         <div class="columns is-flex-mobile is-hidden-tablet">
           <div class="column is-12">
@@ -38,6 +42,10 @@
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
             <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
+          </div>
+          <div class="notification is-danger" v-show="notification">
+            <a href="#" class="delete"></a>
+            หมดเวลาแล้ว
           </div>
         </div>
       </div>
@@ -85,6 +93,16 @@
   .is-flex-tablet .note {
     font-size: 1rem;
   }
+  .is-flex-tablet .notification{
+    position: fixed;
+    top: 60px;
+    left: 41%;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:80px;
+    padding-right:80px;
+    z-index: 2;
+  }
   .is-flex-mobile .run-time {
     font-size: 3em;
     text-align: center;
@@ -98,11 +116,19 @@
   .is-flex-mobile .note {
     font-size: 0.8rem;
   }
+  .is-flex-mobile .notification{
+    position: fixed;
+    top: 60px;
+    left:16%;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:80px;
+    padding-right:80px;
+    width:70vw;
+    text-align: center;
+    z-index: 2;
+  }
   @media (width:768px){
-    /*body{
-      height: 100%;
-      background-color: #e0e4e7;
-    }*/
     .is-flex-mobile .rooms {
       text-align: center;
       font-size: 2.5rem;
@@ -119,6 +145,21 @@
     }
     .is-flex-mobile .note {
       font-size: 1rem;
+    }
+  }
+  @media (width:320px){
+    .is-flex-mobile .notification{
+      position: fixed;
+      top: 60px;
+      left:16%;
+      padding-top:20px;
+      padding-bottom:20px;
+      padding-left:80px;
+      padding-right:80px;
+      width:70vw;
+      text-align: center;
+      z-index: 2;
+      font-size: 0.7em;
     }
   }
   .checkout {
@@ -141,6 +182,7 @@ export default {
       },
       timeID: '',
       item: [],
+      notification: false,
       endtime: parseInt(this.time) + parseInt(this.amount),
       now: '',
       currentTime: '',
@@ -183,7 +225,8 @@ export default {
         if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
           clearInterval(vm.timeID)
           clearInterval((vm.timeID - 1))
-          alert('timeout')
+          vm.notification = true
+          // alert('timeout')
         }
       }
     }
