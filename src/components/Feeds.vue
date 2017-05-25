@@ -71,7 +71,9 @@
               <div class="column is-4" v-for="(room, index) in rooms" v-if="index <6 && index >3">
                 <div class="card">
                   <div class="card-content">
+                    <p class="title">
                       {{room['.key']}}
+                    </p>
                   </div>
                   <footer class="card-footer">
                       <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
@@ -88,7 +90,9 @@
               <div class="column is-4" v-for="(room, index) in rooms" v-if="index <8 && index >5">
                 <div class="card">
                   <div class="card-content">
+                    <p class="title">
                       {{room['.key']}}
+                    </p>
                   </div>
                   <footer class="card-footer">
                       <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
