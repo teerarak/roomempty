@@ -122,7 +122,7 @@
     <div class="columns is-flex-tablet is-hidden-mobile" v-if="authorized">
       <div class="column on-tablet">
         <section class="ok2">
-          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :history="history" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -163,6 +163,17 @@ export default {
     }
   },
   methods: {
+    history (time) {
+      let vm = this
+      let now = new Date()
+      let datetime = now.getDate() + '/' + parseInt(now.getMonth() + 1) + '/' + parseInt(now.getYear() + 1900)
+      vm.booking.forEach(function (element) {
+        if (element.status === 'finish' && element.date === datetime && (time >= element.startTime || time < element.endTime)) {
+          window.location.href = '/'
+          console.log('hello')
+        }
+      })
+    },
     addUser () {
       this.$firebaseRefs.users.push({
         facebookId: this.profile.uid,
@@ -207,7 +218,6 @@ export default {
               date: datetime,
               status: status
             })
-            console.log('kuy')
           }
         })
       } else {
@@ -225,29 +235,6 @@ export default {
             console.log(element['.key'] + ' ' + element.room)
           }
         })
-      }
-    },
-    clear () {
-      let vm = this
-      var room = {
-        9: 'empty',
-        10: 'empty',
-        11: 'empty',
-        12: 'empty',
-        13: 'empty',
-        14: 'empty',
-        15: 'empty',
-        16: 'empty',
-        17: 'empty',
-        18: 'empty'
-      }
-      console.log('test')
-      for (var n = 0; n < vm.rooms.length; n++) {
-        if (n < 9) {
-          this.$firebaseRefs.rooms.child('Tutor' + ('0' + (n + 1))).set(room)
-        } else {
-          this.$firebaseRefs.rooms.child('Tutor' + (n + 1)).set(room)
-        }
       }
     },
     removeRoom () {
