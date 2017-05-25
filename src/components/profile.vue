@@ -233,6 +233,7 @@ export default {
         vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
         vm.myTime.hour = '0' + vm.myTime.hour
         if (vm.myTime.hour === '00' && vm.myTime.minute === '00') {
+          vm.notification = true
           clearInterval(vm.timeID)
           clearInterval((vm.timeID - 1))
         }
