@@ -123,7 +123,7 @@
     <div class="columns is-flex-tablet is-hidden-mobile" v-if="authorized">
       <div class="column on-tablet">
         <section class="ok2">
-          <router-view :rooms="rooms" :booking="Booking" :book="book" :authorized="authorized"></router-view>
+          <router-view :rooms="rooms" :booking="Booking" :history="history" :book="book" :authorized="authorized"></router-view>
         </section>
       </div>
     </div>
@@ -164,6 +164,17 @@ export default {
     }
   },
   methods: {
+    history (time) {
+      let vm = this
+      let now = new Date()
+      let datetime = now.getDate() + '/' + parseInt(now.getMonth() + 1) + '/' + parseInt(now.getYear() + 1900)
+      vm.booking.forEach(function (element) {
+        if (element.status === 'finish' && element.date === datetime && (time >= element.startTime || time < element.endTime)) {
+          window.location.href = '/'
+          console.log('hello')
+        }
+      })
+    },
     addUser () {
       this.$firebaseRefs.users.push({
         facebookId: this.profile.uid,
@@ -208,7 +219,6 @@ export default {
               date: datetime,
               status: status
             })
-            console.log('kuy')
           }
         })
       } else {

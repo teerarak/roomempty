@@ -171,7 +171,7 @@
 
 <script>
 export default {
-  props: ['rooms', 'id', 'book', 'time', 'amount', 'booking'],
+  props: ['rooms', 'id', 'book', 'time', 'amount', 'booking', 'history'],
   name: 'profile',
   data () {
     return {
@@ -212,10 +212,7 @@ export default {
       vm.now = new Date()
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
-
-      //  vm.history.forEach(function (element) {
-      //   if (element.status === 'finish' && element.date === )
-      // })
+      vm.history(vm.currentTime)
       if (parseInt(vm.bookTime) === vm.currentTime) {
         vm.reveal = false
         if (vm.currentMinute === 0) {
@@ -235,11 +232,9 @@ export default {
         }
       } else {
         vm.passTime = vm.endtime - vm.currentTime
-        console.log(vm.passTime)
         if (vm.passTime <= vm.endtime - parseInt(vm.time)) {
           vm.reveal = false
           if (vm.currentMinute === 0) {
-            console.log('hello')
             vm.myTime.minute = '0' + vm.currentMinute
           } else {
             vm.myTime.minute = 60 - vm.currentMinute
