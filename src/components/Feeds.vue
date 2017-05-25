@@ -2,11 +2,34 @@
   <div class="Feeds">
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
-          <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
-          <div class="container is-fluid">
-            <div class="columns">
-              <div class="column is-8 is-offset-2">
-            <table class="table is-striped status-rooms" v-if="have">
+        <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-8 is-offset-2">
+
+              <div class="card" v-for="room in rooms">
+                <div class="card-content">
+                  <p class="title">
+                    {{room['.key']}}
+                  </p>
+                  <p class="subtitle">
+                    Jeff Atwood
+                  </p>
+                </div>
+                <footer class="card-footer">
+                  <p class="card-footer-item">
+                    <span>
+                      View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                    </span>
+                  </p>
+                  <p class="card-footer-item">
+                    <span>
+                      Share on <a href="#">Facebook</a>
+                    </span>
+                  </p>
+                </footer>
+              </div>
+            <!-- <table class="table is-striped status-rooms" v-if="have">
               <thead>
                 <tr>
                   <th><center>ห้อง</center></th>
@@ -27,10 +50,10 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <div v-else>
+            </table> -->
+            <!-- <div v-else>
               <h1>Hello</h1>
-            </div>
+            </div> -->
            </div>
           </div>
          </div>
@@ -40,11 +63,130 @@
       <div class="column">
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
           <div class="container is-fluid">
-            <div class="columns">
-              <div class="column is-9 is-offset-1">
-              <table class="table is-striped status-rooms on-tablet" v-if="have">
-                <thead>
-                  <tr>
+            <div class="columns is-4">
+              <div class="column is-2">
+              </div>
+              <div class="column is-4" v-for="(room, index) in rooms" v-if="index <2">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      จองเลย
+                    </p>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-2">
+              </div>
+            </div>
+            <div class="columns is-4">
+              <div class="column is-2">
+              </div>
+              <div class="column is-4" v-for="(room, index) in rooms" v-if="index < 4 && index >1">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      จองเลย
+                    </p>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-2">
+              </div>
+            </div>
+            <div class="columns is-4">
+              <div class="column is-2">
+              </div>
+              <div class="column is-4" v-for="(room, index) in rooms" v-if="index <6 && index >3">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      จองเลย
+                    </p>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-2">
+              </div>
+            </div>
+            <div class="columns is-4">
+              <div class="column is-2">
+              </div>
+              <div class="column is-4" v-for="(room, index) in rooms" v-if="index <8 && index >5">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      จองเลย
+                    </p>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-2">
+              </div>
+            </div>
+            <div class="columns is-4">
+              <div class="column is-2">
+              </div>
+              <div class="column is-4" v-for="(room, index) in rooms" v-if="index < 10 && index > 7">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      จองเลย
+                    </p>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-2">
+              </div>
+            </div>
+            <!-- <div class="columns">
+              <div class="column is-4" v-for="room in rooms">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title">
+                      {{room['.key']}}
+                    </p>
+                    <p class="subtitle">
+                      Jeff Atwood
+                    </p>
+                  </div>
+                  <footer class="card-footer">
+                    <p class="card-footer-item">
+                      <span>
+                        View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                      </span>
+                    </p>
+                  </footer>
+                </div>
+              </div>
+            </div> -->
+              <!-- <table class="table is-striped status-rooms on-tablet" v-if="have">
+                <thead> -->
+                  <!-- <tr>
                     <th><center>ห้อง</center></th>
                     <th><center>เวลา</center></th>
                   </tr>
@@ -57,19 +199,19 @@
                     <td>
                       <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                         <a data-target="modal">
-                          <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+                          <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button> -->
                           <!-- <button type="button" class="button" style="backgroundColor:#f2f2f2" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button> -->
-                        </a>{{ }}
+                        <!-- </a>{{ }}
                       </router-link>
                     </td>
                   </tr>
                 </tbody>
-              </table>
-              <div v-else>
+              </table> -->
+              <!-- <div v-else>
                 <h1>{{checkRoom}}</h1>
-              </div>
-            </div>
-          </div>
+              </div> -->
+            <!-- </div>
+          </div> -->
          </div>
       </div>
     </div>
