@@ -55,7 +55,6 @@
                       <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
                         <a data-target="modal">
                           <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                          <!-- <button type="button" class="button" style="backgroundColor:#f2f2f2" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button> -->
                         </a>{{ }}
                       </router-link>
                     </td>
