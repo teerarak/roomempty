@@ -19,11 +19,7 @@
                     <center>{{room['.key']}}</center>
                   </td>
                   <td>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                      </a>{{ }}
-                    </router-link>
+                    <a class="button is-success" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                   </td>
                 </tr>
               </tbody>
@@ -52,11 +48,7 @@
                       <center>{{room['.key']}}</center>
                     </td>
                     <td>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
-                        <a data-target="modal">
-                          <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                        </a>{{ }}
-                      </router-link>
+                      <a class="button is-success" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </td>
                   </tr>
                 </tbody>
@@ -64,6 +56,28 @@
             </div>
           </div>
          </div>
+      </div>
+    </div>
+
+    <div v-show="show">
+      <div class="modal is-active">
+          <div class="modal-background" @click="DisableModal()"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">{{roomId}}</p>
+            <button class="delete" @click="DisableModal()"></button>
+          </header>
+          <section class="modal-card-body" >
+            <router-link :to="'/reservations/' + roomId + '/' + index" v-for="(time, index) in roomValue" v-if="index >=9">
+              <a data-target="modal">
+                <button type="button" class="button button-time" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+              </a>{{ }}
+            </router-link>
+          </section>
+          <footer class="modal-card-foot">
+            <a class="button" @click="DisableModal()">ยกเลิก</a>
+          </footer>
+        </div>
       </div>
     </div>
 
@@ -78,12 +92,23 @@ export default {
     return {
       time: 0,
       count: 0,
-      have: true
+      have: true,
+      show: false,
+      roomValue: '',
+      roomId: ''
     }
   },
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
+    },
+    showModal (room, id) {
+      this.show = true
+      this.roomValue = room
+      this.roomId = id
+    },
+    DisableModal () {
+      this.show = false
     }
   },
   computed: {
@@ -203,7 +228,7 @@ export default {
     width: 100%;
     margin-left: 4rem;
   }
-  button {
+  .button-time {
     margin-bottom: 5px;
   }
 </style>

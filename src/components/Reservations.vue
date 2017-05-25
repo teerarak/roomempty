@@ -84,6 +84,7 @@ export default {
       for (let i = parseInt(time); i < endTime; i++) {
         vm.item[i] = 'active'
       }
+      this.$toast.open('จองห้องเรียบร้อย มารับกุญแจภายใน 30 นาที')
       vm.booking(time, vm.id, endTime, 'active')
       vm.book(vm.item, vm.id)
     },

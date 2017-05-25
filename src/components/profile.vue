@@ -5,7 +5,7 @@
         <div class="columns is-flex-tablet is-hidden-mobile">
           <div class="column is-half is-offset-one-quarter ">
             <div class="rooms">
-              คุณกำลังจองห้อง {{room['.key']}}
+              ห้อง {{room['.key']}}
             </div>
             <div class="clock-interval">
               <div class="run-time">
@@ -15,9 +15,9 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <div class="note">
+            <!-- <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
-            </div>
+            </div> -->
             <div v-show="reveal">
               <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
             </div>
@@ -27,10 +27,11 @@
             หมดเวลาแล้ว
           </div>
         </div>
+
         <div class="columns is-flex-mobile is-hidden-tablet">
           <div class="column is-12">
             <div class="rooms">
-              คุณกำลังจองห้อง {{room['.key']}}
+              ห้อง {{room['.key']}}
             </div>
             <div class="clock-interval">
               <div class="run-time">
@@ -40,9 +41,9 @@
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
             </div>
-            <div class="note">
+            <!-- <div class="note">
               <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
-            </div>
+            </div> -->
             <div v-show="reveal">
               <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
             </div>
@@ -215,32 +216,23 @@ export default {
     timer () {
       let vm = this
       vm.now = new Date()
-      // vm.currentTime = 17
+      vm.currentTime = 19
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
       if (parseInt(vm.time) === vm.currentTime) {
-        console.log('work')
+        console.log('inloop')
         vm.reveal = false
-        vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
-        vm.myTime.minute = 60 - vm.currentMinute
-        if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
-          clearInterval(vm.timeID)
-          clearInterval((vm.timeID - 1))
-          vm.notification = true
-          // alert('timeout')
+        if (vm.currentMinute === 0 && vm.currentTime) {
+          vm.myTime.hour = '0' + vm.amount
+          vm.myTime.minute = '00'
+        } else {
+          vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
+          vm.myTime.hour = '0' + vm.myTime.hour
+          vm.myTime.minute = 60 - vm.currentMinute
+          if (vm.myTime.minute < 10) {
+            vm.myTime.minute = '0' + vm.myTime.minute
+          }
         }
-        // } else {
-        //   if (vm.myTime.minute === '00') {
-        //     vm.myTime.hour--
-        //     vm.myTime.hour = '0' + vm.myTime.hour
-        //     vm.myTime.minute = 59
-        //   } else {
-        //     vm.myTime.minute--
-        //     if (vm.myTime.minute < 10) {
-        //       vm.myTime.minute = '0' + vm.myTime.minute
-        //     }
-        //   }
-        // }
       }
     }
   },

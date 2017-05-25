@@ -53,10 +53,10 @@
         </div>
       </div>
     </nav>
+
     <div class="home-text">
-        <h1 class="heading" data-target-resolver></h1>
+        <h1 class="text-banner" data-target-resolver></h1>
     </div>
-    <h1 class="heading" data-target-resolver></h1>
     <div class="columns is-flex-mobile is-hidden-tablet">
       <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down on-mobile" address="true"></a>
@@ -194,7 +194,7 @@ export default {
     Booking (startTime, room, endTime, status) {
       let vm = this
       let currentdate = new Date()
-      let datetime = currentdate.toLocaleDateString()
+      let datetime = currentdate.getDate() + '/' + parseInt(currentdate.getMonth() + 1) + '/' + parseInt(currentdate.getYear() + 1900)
       console.log(datetime)
       if (status === 'active') {
         vm.users.forEach(function (element) {
@@ -305,5 +305,11 @@ export default {
   }
   .nav {
     background-color: #ebebe0;
+  }
+  .text-banner {
+    font-size: 4rem;
+    margin: 0;
+    color: #eee;
+    text-transform: uppercase;
   }
 </style>
