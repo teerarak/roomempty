@@ -215,22 +215,22 @@ export default {
     timer () {
       let vm = this
       vm.now = new Date()
-      // vm.currentTime = 17
+      vm.currentTime = 19
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
       if (parseInt(vm.time) === vm.currentTime) {
-        console.log('work')
+        console.log('inloop')
         vm.reveal = false
-        vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
-        if (vm.currentMinute > 0) {
-          vm.myTime.minute = 60 - vm.currentMinute
+        if (vm.currentMinute === 0 && vm.currentTime) {
+          vm.myTime.hour = '0' + vm.amount
+          vm.myTime.minute = '00'
         } else {
-          vm.myTime.minute = vm.currentMinute
-        }
-        if (vm.myTime.minute === '00' && vm.myTime.hour === '00') {
-          clearInterval(vm.timeID)
-          clearInterval((vm.timeID - 1))
-          vm.notification = true
+          vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
+          vm.myTime.hour = '0' + vm.myTime.hour
+          vm.myTime.minute = 60 - vm.currentMinute
+          if (vm.myTime.minute < 10) {
+            vm.myTime.minute = '0' + vm.myTime.minute
+          }
         }
       }
     }
