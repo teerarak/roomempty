@@ -82,7 +82,9 @@ export default {
         }
       })
       for (let i = parseInt(time); i < endTime; i++) {
-        vm.item[i] = 'active'
+        if (vm.item[i] === 'empty') {
+          vm.item[i] = 'active'
+        }
       }
       vm.booking(time, vm.id, endTime, 'active')
       vm.book(vm.item, vm.id)
