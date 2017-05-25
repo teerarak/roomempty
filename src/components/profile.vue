@@ -191,7 +191,7 @@ export default {
       now: '',
       currentTime: '',
       currentMinute: '',
-      test: 0,
+      bookTime: parseInt(this.time),
       reveal: true
     }
   },
@@ -215,21 +215,47 @@ export default {
     timer () {
       let vm = this
       vm.now = new Date()
-      vm.currentTime = 19
+      // vm.currentTime = 16
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
-      if (parseInt(vm.time) === vm.currentTime) {
-        console.log('inloop')
+      // vm.currentMinute = 59
+      if (parseInt(vm.bookTime) === vm.currentTime) {
         vm.reveal = false
-        if (vm.currentMinute === 0 && vm.currentTime) {
-          vm.myTime.hour = '0' + vm.amount
-          vm.myTime.minute = '00'
+        if (vm.currentMinute === 0) {
+          console.log('hello')
+          vm.myTime.minute = '0' + vm.currentMinute
         } else {
-          vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
-          vm.myTime.hour = '0' + vm.myTime.hour
           vm.myTime.minute = 60 - vm.currentMinute
           if (vm.myTime.minute < 10) {
             vm.myTime.minute = '0' + vm.myTime.minute
+          }
+        }
+        vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
+        vm.myTime.hour = '0' + vm.myTime.hour
+        if (vm.myTime.hour === '00' && vm.myTime.minute === '00') {
+          clearInterval(vm.timeID)
+          clearInterval((vm.timeID - 1))
+        }
+      } else {
+        console.log('else')
+        vm.passTime = vm.endtime - (vm.currentTime + 1)
+        if (vm.passTime <= vm.endtime - parseInt(vm.time)) {
+          vm.reveal = false
+          if (vm.currentMinute === 0) {
+            console.log('hello')
+            vm.myTime.minute = '0' + vm.currentMinute
+          } else {
+            vm.myTime.minute = 60 - vm.currentMinute
+            if (vm.myTime.minute < 10) {
+              vm.myTime.minute = '0' + vm.myTime.minute
+            }
+            vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
+            vm.myTime.hour = '0' + vm.myTime.hour
+          }
+          if (vm.myTime.hour === '00' && vm.myTime.minute === '00') {
+            vm.notification = true
+            clearInterval(vm.timeID)
+            clearInterval((vm.timeID - 1))
           }
         }
       }
