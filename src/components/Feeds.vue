@@ -3,66 +3,30 @@
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
         <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
-        <div class="container is-fluid">
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-
-              <div class="card" v-for="room in rooms">
-                <div class="card-content">
-                  <p class="title">
-                    {{room['.key']}}
-                  </p>
-                  <p class="subtitle">
-                    Jeff Atwood
-                  </p>
+          <!-- <div class="container is-fluid"> -->
+            <div class="columns" v-for="room in rooms">
+              <div class="column is-6 is-offset-3">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="content">
+                      {{room['.key']}}
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
+                  </footer>
                 </div>
-                <footer class="card-footer">
-                  <p class="card-footer-item">
-                    <span>
-                      View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
-                    </span>
-                  </p>
-                  <p class="card-footer-item">
-                    <span>
-                      Share on <a href="#">Facebook</a>
-                    </span>
-                  </p>
-                </footer>
               </div>
-            <!-- <table class="table is-striped status-rooms" v-if="have">
-              <thead>
-                <tr>
-                  <th><center>ห้อง</center></th>
-                  <th><center>เวลา</center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="room in rooms">
-                  <td>
-                    <center>{{room['.key']}}</center>
-                  </td>
-                  <td>
-                    <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
-                      <a class="button-borrow" data-target="modal">
-                        <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
-                      </a>{{ }}
-                    </router-link>
-                  </td>
-                </tr>
-              </tbody>
-            </table> -->
-            <!-- <div v-else>
-              <h1>Hello</h1>
-            </div> -->
-           </div>
-          </div>
-         </div>
+            </div>
+         <!-- </div> -->
       </div>
     </div>
+
     <div class="columns is-flex-tablet is-hidden-mobile">
       <div class="column">
           <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
           <div class="container is-fluid">
+
             <div class="columns is-4">
               <div class="column is-2">
               </div>
@@ -75,7 +39,7 @@
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item">
-                      จองเลย
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </p>
                   </footer>
                 </div>
@@ -83,6 +47,7 @@
               <div class="column is-2">
               </div>
             </div>
+
             <div class="columns is-4">
               <div class="column is-2">
               </div>
@@ -95,7 +60,7 @@
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item">
-                      จองเลย
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </p>
                   </footer>
                 </div>
@@ -103,6 +68,7 @@
               <div class="column is-2">
               </div>
             </div>
+
             <div class="columns is-4">
               <div class="column is-2">
               </div>
@@ -115,7 +81,7 @@
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item">
-                      จองเลย
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </p>
                   </footer>
                 </div>
@@ -123,6 +89,7 @@
               <div class="column is-2">
               </div>
             </div>
+
             <div class="columns is-4">
               <div class="column is-2">
               </div>
@@ -135,7 +102,7 @@
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item">
-                      จองเลย
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </p>
                   </footer>
                 </div>
@@ -146,6 +113,7 @@
             <div class="columns is-4">
               <div class="column is-2">
               </div>
+
               <div class="column is-4" v-for="(room, index) in rooms" v-if="index < 10 && index > 7">
                 <div class="card">
                   <div class="card-content">
@@ -155,7 +123,7 @@
                   </div>
                   <footer class="card-footer">
                     <p class="card-footer-item">
-                      จองเลย
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
                     </p>
                   </footer>
                 </div>
@@ -163,60 +131,33 @@
               <div class="column is-2">
               </div>
             </div>
-            <!-- <div class="columns">
-              <div class="column is-4" v-for="room in rooms">
-                <div class="card">
-                  <div class="card-content">
-                    <p class="title">
-                      {{room['.key']}}
-                    </p>
-                    <p class="subtitle">
-                      Jeff Atwood
-                    </p>
-                  </div>
-                  <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <span>
-                        View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
-                      </span>
-                    </p>
-                  </footer>
-                </div>
-              </div>
-            </div> -->
-              <!-- <table class="table is-striped status-rooms on-tablet" v-if="have">
-                <thead> -->
-                  <!-- <tr>
-                    <th><center>ห้อง</center></th>
-                    <th><center>เวลา</center></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="room in rooms">
-                    <td>
-                      <center>{{room['.key']}}</center>
-                    </td>
-                    <td>
-                      <router-link :to="'/reservations/' + room['.key'] + '/' + index" v-for="(time, index) in room['.value']" v-if="index >=9">
-                        <a data-target="modal">
-                          <button type="button" class="button" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button> -->
-                          <!-- <button type="button" class="button" style="backgroundColor:#f2f2f2" v-else disabled><p v-if="index===9">0</p>{{index}}:00</button> -->
-                        <!-- </a>{{ }}
-                      </router-link>
-                    </td>
-                  </tr>
-                </tbody>
-              </table> -->
-              <!-- <div v-else>
-                <h1>{{checkRoom}}</h1>
-              </div> -->
-            <!-- </div>
-          </div> -->
-         </div>
       </div>
     </div>
-
   </div>
+
+  <div v-show="show">
+    <div class="modal is-active">
+        <div class="modal-background" @click="DisableModal()"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">{{roomId}}</p>
+          <button class="delete" @click="DisableModal()"></button>
+        </header>
+        <section class="modal-card-body" >
+          <router-link :to="'/reservations/' + roomId + '/' + index" v-for="(time, index) in roomValue" v-if="index >=9">
+            <a data-target="modal">
+              <button type="button" class="button button-time" style="backgroundColor:#d9d9d9" v-if="time == 'empty'"><p v-if="index===9">0</p>{{index}}:00</button>
+            </a>{{ }}
+          </router-link>
+        </section>
+        <footer class="modal-card-foot">
+          <a class="button" @click="DisableModal()">ยกเลิก</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+</div>
 </template>
 
 <script>
@@ -227,12 +168,24 @@ export default {
     return {
       time: 0,
       count: 0,
-      have: true
+      have: true,
+      show: false,
+      roomValue: '',
+      roomId: '',
+      picture: 1
     }
   },
   methods: {
     deleteRow (index, rows) {
       rows.splice(index, 1)
+    },
+    showModal (room, id) {
+      this.show = true
+      this.roomValue = room
+      this.roomId = id
+    },
+    DisableModal () {
+      this.show = false
     }
   },
   computed: {
@@ -247,6 +200,12 @@ export default {
         }
       })
       return vm.count
+    },
+    currentImage () {
+      let vm = this
+      vm.picture++
+      console.log(vm.picture)
+      return '../assets/Button_I_' + vm.picture + '.png'
     }
   }
 }
@@ -352,7 +311,7 @@ export default {
     width: 100%;
     margin-left: 4rem;
   }
-  button {
+  .button-time {
     margin-bottom: 5px;
   }
 </style>
