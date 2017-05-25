@@ -210,31 +210,32 @@ export default {
     timer () {
       let vm = this
       vm.now = new Date()
-      // vm.currentTime = 16
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
-      // vm.currentMinute = 59
+
+      //  vm.history.forEach(function (element) {
+      //   if (element.status === 'finish' && element.date === )
+      // })
       if (parseInt(vm.bookTime) === vm.currentTime) {
         vm.reveal = false
         if (vm.currentMinute === 0) {
-          console.log('hello')
           vm.myTime.minute = '0' + vm.currentMinute
         } else {
           vm.myTime.minute = 60 - vm.currentMinute
           if (vm.myTime.minute < 10) {
             vm.myTime.minute = '0' + vm.myTime.minute
           }
+          vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
+          vm.myTime.hour = '0' + vm.myTime.hour
         }
-        vm.myTime.hour = vm.endtime - (vm.currentTime + 1)
-        vm.myTime.hour = '0' + vm.myTime.hour
         if (vm.myTime.hour === '00' && vm.myTime.minute === '00') {
           vm.notification = true
           clearInterval(vm.timeID)
           clearInterval((vm.timeID - 1))
         }
       } else {
-        console.log('else')
-        vm.passTime = vm.endtime - (vm.currentTime + 1)
+        vm.passTime = vm.endtime - vm.currentTime
+        console.log(vm.passTime)
         if (vm.passTime <= vm.endtime - parseInt(vm.time)) {
           vm.reveal = false
           if (vm.currentMinute === 0) {

@@ -26,8 +26,8 @@
       <div class="column">
         <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
         <div class="container">
-          <div class="columns">
-            <div class="column is-4" v-for="room in rooms">
+          <div class="columns" v-for="room in rooms">
+            <div class="column is-6 is-offset-3">
               <div class="card">
                 <div class="card-content">
                   <div class="content">
