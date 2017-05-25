@@ -2,62 +2,48 @@
   <div class="Feeds">
     <div class="columns is-flex-mobile is-hidden-tablet">
       <div class="column">
-          <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
-          <div class="container is-fluid">
-            <div class="columns">
-              <div class="column is-8 is-offset-2">
-            <table class="table is-striped status-rooms" v-if="have">
-              <thead>
-                <tr>
-                  <th><center>ห้อง</center></th>
-                  <th><center>เวลา</center></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="room in rooms">
-                  <td>
-                    <center>{{room['.key']}}</center>
-                  </td>
-                  <td>
-                    <a class="button is-success" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-           </div>
-          </div>
+        <h1 class="heading-rooms on-mobile">จองห้องติว</h1>
+          <div class="container">
+            <div class="columns" v-for="room in rooms">
+              <div class="column is-6 is-offset-3">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="content">
+                      {{room['.key']}}
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
+                  </footer>
+                </div>
+              </div>
+            </div>
          </div>
       </div>
     </div>
+
     <div class="columns is-flex-tablet is-hidden-mobile">
       <div class="column">
-          <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
-          <div class="container is-fluid">
-            <div class="columns">
-              <div class="column is-9 is-offset-1">
-              <table class="table is-striped status-rooms on-tablet" v-if="have">
-                <thead>
-                  <tr>
-                    <th><center>ห้อง</center></th>
-                    <th><center>เวลา</center></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="room in rooms">
-                    <td>
-                      <center>{{room['.key']}}</center>
-                    </td>
-                    <td>
-                      <a class="button is-success" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <h1 class="heading-rooms on-tablet">จองห้องติว</h1>
+        <div class="container">
+          <div class="columns">
+            <div class="column is-4" v-for="room in rooms">
+              <div class="card">
+                <div class="card-content">
+                  <div class="content">
+                    {{room['.key']}}
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
+                </footer>
+              </div>
             </div>
           </div>
          </div>
       </div>
     </div>
+
 
     <div v-show="show">
       <div class="modal is-active">
@@ -95,7 +81,8 @@ export default {
       have: true,
       show: false,
       roomValue: '',
-      roomId: ''
+      roomId: '',
+      picture: 1
     }
   },
   methods: {
@@ -123,6 +110,12 @@ export default {
         }
       })
       return vm.count
+    },
+    currentImage () {
+      let vm = this
+      vm.picture++
+      console.log(vm.picture)
+      return '../assets/Button_I_' + vm.picture + '.png'
     }
   }
 }
