@@ -5,7 +5,7 @@
         <div class="columns is-flex-tablet is-hidden-mobile">
           <div class="column is-half is-offset-one-quarter ">
             <div class="rooms">
-              คุณกำลังจองห้อง {{room['.key']}}
+              ห้อง {{room['.key']}}
             </div>
             <div class="clock-interval">
               <div class="run-time">
@@ -14,9 +14,6 @@
               <div class="status-timeout">
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
-            </div>
-            <div class="note">
-              <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
             <div v-show="reveal">
               <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
@@ -27,10 +24,11 @@
             หมดเวลาแล้ว
           </div>
         </div>
+
         <div class="columns is-flex-mobile is-hidden-tablet">
           <div class="column is-12">
             <div class="rooms">
-              คุณกำลังจองห้อง {{room['.key']}}
+              ห้อง {{room['.key']}}
             </div>
             <div class="clock-interval">
               <div class="run-time">
@@ -39,9 +37,6 @@
               <div class="status-timeout">
                 ใช้ได้ถึงเวลา {{endtime}}:00
               </div>
-            </div>
-            <div class="note">
-              <center>* กรุณามารับกุญแจภายใน 30 นาที หลังจากที่เริ่มจับเวลาแล้ว</center>
             </div>
             <div v-show="reveal">
               <router-link to="/"><center><button type="button" class="checkout button is-danger" name="button" @click="books(time)">ยกเลิกการจอง</button></center></router-link>
@@ -217,7 +212,6 @@ export default {
       vm.now = new Date()
       vm.currentTime = vm.now.getHours()
       vm.currentMinute = vm.now.getMinutes()
-      // console.log(history )
       vm.history(vm.currentTime)
       if (parseInt(vm.bookTime) === vm.currentTime) {
         vm.reveal = false

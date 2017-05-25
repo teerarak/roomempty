@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <nav class="nav">
-      <div class="nav-left">
+    <nav class="navbar">
+      <div class="nav-left navbar">
         <a class="nav-item">
-          <img src="./assets/TTR.png" alt="Tutor Room">
+          <img src="./assets/ttr2.png" alt="Tutor Room">
         </a>
       </div>
-      <div class="nav-right is-flex-mobile is-hidden-tablet">
+      <div class="nav-right is-flex-mobile is-hidden-tablet ">
         <div v-if="ready">
           <div v-if="authorized">
             <div class="nav-item">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div v-else>
-            <a class="nav-item">
+            <a class="nav-item auto-load-window">
               <button type="button" @click="login" class="button is-black login" data-target="modal">login</button>
             </a>
           </div>
@@ -27,10 +27,10 @@
           </a>
         </div>
       </div>
-      <div class="nav-right nav-menu">
-        <div class="nav-item" v-if="authorized">
-          <img :src="profile.photoURL" alt="" width="10%">
-          <div class="nav-item">
+      <div class="nav-right nav-menu ">
+        <div class="nav-item " v-if="authorized">
+          <img :src="profile.photoURL" alt="" width="10%" style="z-index:3;">
+          <div class="nav-item"  style="z-index:3;">
             <h1>{{ profile.displayName }}</h1>
           </div>
         </div>
@@ -53,16 +53,17 @@
         </div>
       </div>
     </nav>
+
     <div class="home-text">
-        <h1 class="heading" data-target-resolver></h1>
+        <h1 class="text-banner" data-target-resolver></h1>
     </div>
     <div class="columns is-flex-mobile is-hidden-tablet">
-      <section class="sec">
+      <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down on-mobile" address="true"></a>
       </section>
     </div>
     <div class="columns is-flex-tablet is-hidden-mobile">
-      <section class="sec">
+      <section class="sec" v-show="authorized">
         <a href="#" class="scroll-down on-tablet" address="true"></a>
       </section>
     </div>
@@ -204,7 +205,7 @@ export default {
     Booking (startTime, room, endTime, status) {
       let vm = this
       let currentdate = new Date()
-      let datetime = currentdate.toLocaleDateString()
+      let datetime = currentdate.getDate() + '/' + parseInt(currentdate.getMonth() + 1) + '/' + parseInt(currentdate.getYear() + 1900)
       console.log(datetime)
       if (status === 'active') {
         vm.users.forEach(function (element) {
@@ -285,11 +286,23 @@ export default {
 <style >
   button.logout, button.login, button.is-loading {
     margin: 0;
+    z-index: 3;
   }
   .control button{
     float: right;
   }
-  .nav {
+  .navbar {
     background-color: #ebebe0;
+    position: fixed;
+    z-index: 3;
+  }
+  .text-banner {
+    font-size: 4rem;
+    margin: 0;
+    color: #eee;
+    text-transform: uppercase;
+  }
+  img {
+    margin-top: 5px;
   }
 </style>

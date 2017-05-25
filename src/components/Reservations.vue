@@ -86,6 +86,7 @@ export default {
           vm.item[i] = 'active'
         }
       }
+      this.$toast.open('จองห้องเรียบร้อยแล้ว')
       vm.booking(time, vm.id, endTime, 'active')
       vm.book(vm.item, vm.id)
     },
