@@ -13,7 +13,7 @@
                     </div>
                   </div>
                   <footer class="card-footer">
-                    <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
+                    <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -38,9 +38,7 @@
                     </p>
                   </div>
                   <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </p>
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -59,9 +57,7 @@
                     </p>
                   </div>
                   <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </p>
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -75,14 +71,10 @@
               <div class="column is-4" v-for="(room, index) in rooms" v-if="index <6 && index >3">
                 <div class="card">
                   <div class="card-content">
-                    <p class="title">
                       {{room['.key']}}
-                    </p>
                   </div>
                   <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </p>
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -96,14 +88,10 @@
               <div class="column is-4" v-for="(room, index) in rooms" v-if="index <8 && index >5">
                 <div class="card">
                   <div class="card-content">
-                    <p class="title">
                       {{room['.key']}}
-                    </p>
                   </div>
                   <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </p>
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -122,9 +110,7 @@
                     </p>
                   </div>
                   <footer class="card-footer">
-                    <p class="card-footer-item">
-                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])">จองห้อง</a>
-                    </p>
+                      <a class="card-footer-item" @click="showModal(room['.value'], room['.key'])"><strong>จองห้อง</strong></a>
                   </footer>
                 </div>
               </div>
@@ -313,5 +299,15 @@ export default {
   }
   .button-time {
     margin-bottom: 5px;
+  }
+  /*.card-content{
+    background-color: #555;
+  }*/
+  .card-footer-item{
+    background-color: #DFDFDF;
+  }
+  .card-footer-item:hover{
+    background-color: #43F54F;
+    color: white;
   }
 </style>
